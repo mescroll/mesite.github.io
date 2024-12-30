@@ -1,0 +1,54 @@
+body {
+	background-color: #2C2C32
+}
+
+.ms-content .c-view {
+	padding-top: 100px;
+	text-align: center;
+	color: white;
+}
+
+.base-warp{
+	position: relative;
+	display: inline-block;
+	width: 666px;
+	margin-bottom: 80px;
+	padding: 10px 30px;
+	text-align: left;
+	line-height: 50px;
+	border: 1px solid white;
+	border-radius: 10px;
+}
+.base-warp a{
+	display: block;
+	font-size: 18px;
+	color: white;
+}
+.base-warp a:hover{
+	color: #53D9EF;
+}
+.base-warp .download{
+	position: absolute;
+	top: 65px;
+	right: -1px;
+	font-size: 20px;
+	padding: 15px 65px;
+	border: 1px solid #53D9EF;
+	border-right: none;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	color: #53D9EF;
+}
+.base-warp .download.small{
+	position: absolute;
+	top: 8px;
+	right: -1px;
+	padding: 0 65px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+.base-warp .download:hover{
+	border: 1px solid #EA1C40;
+	border-right: none;
+	color: #EA1C40;
+}

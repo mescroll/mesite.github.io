@@ -1,0 +1,108 @@
+body{
+	background-color: #2C2C32
+}
+.ms-content .c-view{
+	padding-left: 24px;
+	text-align: left;
+	color: white;
+}
+/*目录*/
+.nav-float{
+	z-index: 9990;
+	position: fixed;
+	top: 150px;
+	right: 6%;
+	width: 150px;
+	text-align: center;
+	border: 1px solid darkgray;
+	border-radius: 6px;
+	background-color: #2C2C32;
+}
+.nav-float a{
+	display: block;
+	padding: 10px;
+	border-bottom: 1px solid darkgray;
+	color: white;
+}
+.nav-float a:last-child{
+	border: none;
+}
+.nav-float a:hover{
+	color: #53D9EF;
+}
+/*菜单标题*/
+.nav-title{
+	padding: 76px 0 15px 0;
+	font-size: 20px;
+	color: #53D9EF;
+}
+/*iPhone*/
+.demo-li{
+	display: inline-block;
+	width: 40%;
+	margin: 30px 4%;
+	text-align: center;
+	vertical-align: top;
+	cursor: pointer;
+	color: white;
+}
+.iPhone{
+	position: relative;
+	display: inline-block;
+	border: 1px solid white;
+	border-radius: 40px;
+	padding: 70px 10px;
+	margin-left: 20px;
+}
+.iPhone img{
+	width: 320px;
+	height: 562px;
+}
+.iPhone:before{
+	position: absolute;
+	top: 30px;
+	left: 50%;
+	content: '';
+	display: inline-block;
+	width: 80px;
+	height: 8px;
+	margin-left: -40px;
+	border: 1px solid white;
+	border-radius: 8px;
+}
+.iPhone:after{
+	position: absolute;
+	left: 50%;
+	bottom: 15px;
+	content: '';
+	display: block;
+	width: 40px;
+	height: 40px;
+	margin-left: -20px;
+	border: 1px solid white;
+	border-radius: 50%;
+}
+.demo-li:hover .iPhone,
+.demo-li:hover .iPhone:before,
+.demo-li:hover .iPhone:after{
+	border: 1px solid #53D9EF;
+}
+.demo-li:hover{
+	color: #53D9EF;
+}
+/*标题*/
+.demo-title{
+	font-size: 18px;
+	padding: 10px;
+}
+/*线框按钮*/
+.btn-line{
+	display: inline-block;
+	font-size: 14px;
+	margin: 14px;
+	padding: 8px 30px;
+	border: 1px solid #53D9EF;
+	border-radius: 20px;
+	color: #53D9EF;
+	cursor: pointer;
+}

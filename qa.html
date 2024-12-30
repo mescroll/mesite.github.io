@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>mescroll -- 精致的下拉刷新和上拉加载js框架</title>
+		<meta name="Keywords" content="mescroll -- 精致的下拉刷新和上拉加载js框架(JS framework for pull-refresh and pull-up-loading),原生js, 支持vue, 不依赖jquery, zepto, 比 iScroll5, dropload 精简强大">
+		<meta name="Description" content="mescroll -- 精致的下拉刷新和上拉加载js框架(JS framework for pull-refresh and pull-up-loading). 原生js, 支持vue, 不依赖jquery, zepto, 比iScroll,dropload精简强大; 一套代码多端运行: 完美运行于android,iOS,手机各浏览器,兼容PC端主流浏览器; 参数自由搭配,随心定制,轻松拓展; 主流APP案例,丰富经典">
+		<link rel="stylesheet" href="css/app.css">
+		<style type="text/css">
+			body{background-color: #2C2C32}
+			.ms-content .c-view{
+				padding: 10px 0 100px 0;
+				color: white;
+			}
+			.nav-title{padding:76px 0 15px 0;font-size:20px;color:#a6e22b}
+			.q-text{
+				display: block;
+				padding:10px 0;
+				color: #53D9EF;
+			}
+			.a-text{
+				margin-left: 28px;
+				line-height: 25px;
+			}
+			.a-text a{color: #E6DB74;}
+			pre{
+				margin-top: 10px;
+				margin-left: 28px;
+				font-size: 14px;
+				line-height: 20px;
+				border-radius: 10px;
+				background-color: #23241F;
+				color: #E6DB74;
+			}
+			.code{
+				padding: 2px 10px;
+				border-radius: 10px;
+				font-size: 14px;
+				background-color: #23241F;
+				color: #E6DB74;
+			}
+			.refund{
+				padding: 30px 0;
+			}
+			
+			/*taobao*/
+			#tk_box_1{width: 390px; height: 460px; margin: 30px 0 0 28px;}
+		</style>
+	</head>
+
+	<body>
+		<!--标题-->
+		<div class="ms-header">
+			<div class="c-view">
+				<a href="index.html"><img class="logo" src="img/logo.png"/></a>
+				<div class="nav"> <a href="index.html">首页</a> <a href="demo.html">案例</a> <a href="api.html">mescroll.js</a> <a href="uni.html">mescroll-uni</a> <a class="active">问答</a> </div>
+			</div>
+		</div>
+		
+		<!--内容-->
+		<div class="ms-content">
+			
+			<div class="c-view">
+				<p class="nav-title">mescroll.js的常见问题 :</p>
+				<a class="q-text" href="#q1">Q. 为什么我写的上拉触发不了 或者 列表无法滑动 ?</a>
+				<a class="q-text" href="#q2">Q. 给mescroll的父元素或mescroll设置高度的技巧 ?</a>
+				<a class="q-text" href="#q4">Q. 如何修改下拉刷新和上拉加载的文本?</a>
+				<a class="q-text" href="#q3">Q. 如何根据下拉的情况动态改变下拉刷新区域的布局 ?</a>
+				<a class="q-text" href="#q7">Q. 如何修改page.num从0开始 ?</a>
+				<a class="q-text" href="#q9">Q. 如何使用mescroll.endByPage, mescroll.endBySize, mescroll.endSuccess 中的 time参数 ?</a>
+				<a class="q-text" href="#q8">Q. 如何修复iOS下拉刷新偶尔闪白屏或抖动的情况?</a>
+				<a class="q-text" href="#q10">Q. 在iOS的微信,QQ,Safari等浏览器, 列表顶部下拉和底部上拉露出浏览器灰色背景, 如何禁止iOS橡皮筋效果下拉回弹 ?</a>
+				<a class="q-text" href="#q6">Q. 为什么position: fixed的元素写到mescroll的div里面会抖动 ?</a>
+				<a class="q-text" href="#q5">Q. 为什么在PC端或HBuilder预览mescroll案例鼠标向上拖不动列表 ?</a>
+				<a class="q-text" href="#q11">Q. mescroll列表包含overflow:auto的div, 如何避免下拉时触发下拉刷新 ?</a>
+				
+				<p class="nav-title">mescroll-uni的常见问题 :</p>
+				<a class="q-text" href="#q20">Q. 为什么我写的上拉触发不了 或 加载进度无法结束 ?</a>
+				<a class="q-text" href="#q20">Q. 如何重置mescroll默认样式,比如修改回到顶部按钮的bottom值 ?</a>
+				<a class="q-text" href="#q21">Q. 如何隐藏滚动条 ?</a>
+				<a class="q-text" href="#q21">Q. 为什么设置全局组件失效 ?</a>
+				<a class="q-text" href="#q25">Q. H5端如何禁止iOS橡皮筋效果下拉回弹, 如何解决android微信X5浏览器与下拉刷新的冲突 ?</a>
+				<a class="q-text" href="#q26">Q. 部分小程序运行DEMO失败,无法调用mescroll的方法 (如:字节跳动) ?</a>
+				<a class="q-text" href="#q27">Q. 如何通过flex布局来固定mescroll的高度 ?</a>
+				<a class="q-text" href="#q27">Q. 如何使用mescroll.endByPage, mescroll.endBySize, mescroll.endSuccess 中的 time参数 ?</a>
+				
+				<p class="refund">
+					敲黑板 :<br />
+					如果您遇到的问题,在mescroll的案例中并未出现, 最好再认真看一下基础案例或者文档 ~<br />
+					很多加我QQ反馈问题的朋友, 都没有看基础案例, 也不认真看文档, 花了许多时间, 走了许多弯路哦 ~<br />
+					也许您的问题其实在基础案例一两行代码或一个参数配置就能解决啦 ~<br />
+					<br /><br />
+					如果以下答案未能解决您的问题, 可在GitHub提issues 或 发送邮件至  mescroll@qq.com, 最好能提供重现问题的Demo O(∩_∩)O谢谢 ~<br />
+					<br /><br />
+					支持付费咨询, 金额随意, 作者QQ <span class="green">2260429223</span>
+				</p>
+				
+<p id="q1" class="nav-title">解答 :</p>
+				
+				<p class="q-text">Q. 为什么我写的上拉触发不了 或者 列表无法滑动  ?</p>
+				<p class="a-text">
+					先理解mescroll触发上拉的原理:
+					<br />
+	<pre><code class="html">
+	mescroll 是 div 原生的 overflow: auto 滚动. 与 iScroll和better-scroll通过js模拟列表滚动不同, mescroll的性能更优,兼容性更好.<br />
+	我们知道: 当一个div的内容超过这个div设置的高度时, 就会出现滚动条.<br />
+	此时上下滑动即可触发div的onScroll事件, 从而能够监听列表如果滚动到了底部即可触发上拉加载.<br />
+	所以如果div没有设置的高度, div里面的内容再多,也无法溢出这个div, 那么overflow:auto的效果就没有了.<br />
+	</code></pre>
+					<br />
+					1. mescroll 默认高度是100%, 所以 mescroll 的父元素需要有固定的高度 或者 直接给 mescroll 设置高度.<br />
+					您可先给 mescroll 写死高度,测试看看是否能触发上拉,如: <span class="code">&lt;div id="mescroll" class="mescroll" style="height: 400px;"&gt;</span><br />
+					如果写死高度能上拉,那只需 <a href="#q2" class="green">给mescroll或父元素设置高度</a> 即可;
+					<br /><br />
+					2. 如设置高度没有解决,那很可能 mescroll 的 overflow: auto 样式被覆盖了.<br />
+					 可先给 mescroll 写死 overflow , 测试看看能否上拉, 如 : <span class="code">&lt;div id="mescroll" class="mescroll" style="height: 400px; overflow: auto;"&gt;</span>
+					<br /><br />
+					3. 请勿给mescroll的父元素设置了overflow, 否则滚动区域就在父元素, 从而使mescroll滚动监听失效.
+					<br /><br />
+					4. 检查一下列表是否用了 浮动 或者 定位 , 导致列表内容并没有撑开高度, 从而使mescroll滚动监听失效 (注释列表的样式排除一下).
+					<br /><br />
+					5. 检查noMoreSize与page.size配置的值. 如果您结束上拉时,传入的当前页数据个数小于page.size时, <br/> mescroll会认为无更多数据, 将不再加载下一页. 详见<a class="green" href="https://github.com/mescroll/mescroll/issues/236">issues236</a>
+					<br /><br />
+					6. 配置up的isBounce为true试试.
+<span id="q2"></span>
+					<br /><br />
+					7. 更新mescroll的版本试试.
+					<br /><br />
+					8. 如果运行官方案例没有问题,请仔细对比那些你认为不可能影响的地方,哪怕一行css和js
+					<br /><br />
+				</p>
+				
+				<br />
+				<p class="q-text">Q. 给 mescroll 的父元素或 mescroll 设置高度的技巧 ?</p>
+				<p class="a-text">
+					
+					<p class="a-text">方法一 ( 推荐 ) : 可参考 mescroll 的案例通过  position: fixed或absolute 来设置高度 , 简单快捷 :</p>
+					<pre><code class="html">
+	<span class="gray">/*固定高度*/</span>
+	.mescroll{
+		position: fixed;
+		top: 44px;
+		bottom: 0;
+		height: auto;<span class="gray">/*如设置bottom:50px,则需height:auto才能生效*/</span>
+	}
+					</code></pre>
+					
+					<br />
+					
+					<p class="a-text">方法二 : 给 mescroll 的父元素设置高度. <span class="gray">因为mescroll的div默认height:100%, 所以当父元素有固定高度时,mescroll的div就会有固定的高度.</span></p>
+					<br />
+					<p class="a-text">方法三 : 通过css固定mescroll的div高度. <span class="gray">如: .mescroll{height:500px} 或 &lt;div id="mescroll" class="mescroll" style="height: 400px;"&gt;</span></p>
+					<br />
+<span id="q4"></span>
+					<p class="a-text">方法四 : 通过js固定mescroll的div高度. <span class="gray">如: document.getElementById("mescroll").style.height="500px";</span></p>
+					<br />
+					<p class="a-text">方法五 : 使用body为滚动区域,无需设置高度. 具体请参考 <a href="preview.html?name=list-mescroll-body" target="_blank">body为滚动区域的案例</a></p>
+				</p>
+				
+				<br />
+				<p class="q-text">Q. 如何修改下拉刷新和上拉加载的文本  ?</p>
+				<p class="a-text">
+					建议参考 <a href="preview.html?name=mescroll-options" target="_blank">mescroll所有配置项</a> 里面的代码 , 可以很清楚的知道 :<br />
+<span id="q3"></span>可通过配置 down 的 htmlContent 或 inited 或 inOffset 或 outOffset 或 showLoading 修改下拉刷新的文本<br />
+					在1.3.7版本中, 还可通过配置 down 的 textInOffset 或 textOutOffset 或 textLoading 修改下拉刷新的文本<br />
+					可通过配置 up 的 htmlNodata 或 htmlLoading 修改上拉加载的文本 
+				</p>
+					
+				<br />
+				<p class="q-text">Q. 如何根据下拉的情况动态改变下拉刷新区域的布局 ?</p>
+				<p class="a-text">
+					1. 在 down 的 htmlContent 中配置所有要动态显示的布局  <br />
+					2. 在 down 的 inited 中, 初始化所有动态显示的布局 <br />
+<span id="q7"></span>3. 监听down的 inOffset, outOffset, onMoving回调, 控制各布局的显示隐藏状态
+					<br /><br />
+					建议参考 <a href="preview.html?name=mescroll-options" target="_blank">mescroll所有配置项</a> 和 <a href="demo.html#hight" target="_blank">中高级案例源码</a><br />
+				</p>
+				
+				<br />
+				<p class="q-text">Q. 如何修改page.num从0开始  ?</p>
+				<p class="a-text">
+<span id="q9"></span>mescroll 在 upCallback 中回调的 page.num 是从 1 开始的, 如果想改为从 0 开始, 可声明变量 <span class="code">var pageNum = page.num-1;</span><br /><br />
+					错误写法: page.num = page.num-1 或 page.num-- ; 这样会直接改变mescroll内部page对象的值,导致分页数据错误.<br />
+					注意: 如果要重置列表数据,请使用mescroll.resetUpScroll(), 而不是mescroll.setPageNum(1)<br />
+				</p>
+					
+				<br />
+				<p class="q-text">Q. 如何使用mescroll.endByPage, mescroll.endBySize, mescroll.endSuccess中的 time参数 ?</p>
+				<p class="a-text">
+					当准备上拉加载下一页的时候,如果此时后台数据库新增了几条记录,那么加载下一页的前面几条数据会和上一页的重复<br />
+					您可以在翻下一页的时候,叫后台人员新增几条记录,即可重现上述问题<br /><br />
+					解决方法: 后台人员在请求列表的接口加传服务器时间的字段, 前端第一页加载成功后,给mescroll的time参数传入服务器时间,<br />
+					mescroll会缓存此时间,当上拉加载第二页的时候 upCallback的page.time会有值<br />
+<span id="q8"></span>前端把page.time 和 page.num,page.size一起传给后台,过滤新加入的几条记录即可<br />
+					( 注意: 后台过滤新加入的数据时,需考虑第一页page.time为null的情况,因为第一页无需过滤。 mescroll不自动生成时间,服务器时间需由后台接口返回 )
+				</p>
+					
+				<br />
+				<p class="q-text">Q. 如何修复iOS下拉刷新偶尔闪白屏或抖动的情况?</p>
+<span id="q10"></span>
+				<p class="a-text">
+					在mescroll 1.3.8 版本中,已为您避免99%闪白屏或抖动的情况. 请检查更新~<br />
+					如果您更新到 1.3.8版本仍出现闪白屏或抖动的情况, 可能您的列表过于复杂, 此时建议配置 down 的 mustToTop 为 true 来彻底修复.
+				</p>
+				
+				<br />
+				<p class="q-text">Q. 在iOS的微信,QQ,Safari等浏览器, 列表顶部下拉和底部上拉露出浏览器灰色背景, 卡顿2秒 ?</p>
+				<p class="a-text">
+					原因是 iOS 自身的回弹效果导致的. 解决方法如下:  <br />
+					<br />
+					1. mescroll.min.css 和 mescroll.min.js 最少要更新到1.3.0版本 <br />
+					<br />
+					2. 配置 up 的 <span class="code">isBounce</span> 为 false, 或者调用<span class="code">mescroll.setBounce(false)</span>, 禁止ios的回弹效果即可<br />
+					<br />
+				</p>
+				<p class="a-text">
+					特别注意: 如果你的应用是<span class="code">在APP上运行的,则完全没有必要去配置isBounce</span>. 因为这个问题只存在iOS的微信,QQ,Safari等浏览器而已;<br />
+					<br />
+					当前你的项目需在iOS的微信运行时, 才去配置 up 的 isBounce 为 false , mescroll会禁止window的touchmove事件, 从而阻止iOS的回弹效果.  <br />
+					此时除了 mescroll的div 可以滑动,其他的区域匀无法滑动;    <br />
+					如果你希望 mescroll之外的某个div可以滑动,则给这个div加入<span class="code">mescroll-touch</span>的样式即可; <br />
+					<br />
+					比如你希望顶部导航菜单 class="nav-top"的div 可接收touchmove事件, 则class="nav-top mescroll-touch"   <br />
+					如果添加<span class="code">mescroll-touch-x</span> 则可水平滑动  ; 如果添加<span class="code">mescroll-touch-y</span> 则可上下滑动<br />
+					<br />
+<span id="q6"></span>提示1: 建议在页面关闭前调用<span class="code">mescroll.setBounce(true)</span>, 可避免对其他页面的影响<br />
+					提示2: <a href="preview.html?name=list-mescroll-body" target="_blank">body为滚动区域</a>,不支持配置isBounce,所以上下拉仍会露出浏览器灰色背景,但不会卡顿2秒.<br />
+					提示3: 您还有其他问题 建议看看 <a href="https://github.com/mescroll/mescroll/issues/80" target="_blank">issues80</a>
+				</p>
+				
+				<br />
+<span id="q5"></span>
+				<p class="q-text">Q. 为什么position: fixed的元素写到mescroll的div里面会抖动?</p>
+				<p class="a-text">
+					在iOS的惯性滚动中, fixed元素在overflow:auto的div里面确实会抖动, android和PC是正常的.<br />
+					这个不是mescroll的问题, 您可以写一个简单的案例测试. 解决方法只需把fixed元素写到mescroll的div外面即可.
+				</p>
+				
+				<br />
+				<p class="q-text">Q. 为什么在PC端或HBuilder预览mescroll案例鼠标向上拖不动列表 ?</p>
+				<p class="a-text">
+					PC浏览器没有touch事件, 没法直接用鼠标向上拖动列表的, 得用鼠标滚轮,才符合PC端的使用习惯<br />
+					PC浏览器可按"F12"键, 切换为手机预览模式即可正常拖动列表.<br />
+<span id="q11"></span>	
+					HBuilder边改边看模式目前只支持window,body级别的列表滑动, 暂不支持div,ul的overflow: auto列表滚动, 得用鼠标滚轮 .<br />
+					以上并非mescroll框架的问题哈 ~ 不影响在移动端的正常使用.<br />
+				</p>
+
+				<br />
+				<p class="q-text">Q. mescroll列表包含overflow:auto的div, 如何避免下拉时触发下拉刷新 ?</p>
+				<p class="a-text">
+					只需对这div阻止touchmove的事件冒泡即可避免冲突:
+<span id="q20"></span>	
+				<pre><code class="html">
+	document.getElementById("xxx").addEventListener('touchmove',function(e){
+		e.stopPropagation()
+	})
+				</code></pre>
+				</p>
+								
+				<p class="nav-title">mescroll的uni版本常见问题 :</p>
+				
+				<br />
+				<p class="q-text">Q. 为什么我写的上拉触发不了 或 加载进度无法结束 ?</p>
+				<p class="a-text">
+					1. 检查 Mescroll组件和mescroll-mixins 是否正确引入和注册<br />
+					2. 组件的@init, @down, @up 是否已配置, 字节跳动小程序还需配置 ref="mescrollRef"<br />
+					3. 在 downCallback 和 upCallback 联网成功和失败的方法都需要结束mescroll的加载进度<br />
+					4. 检查mescroll-body和mescroll-nui的pages.json的配置是否正确, 这两者的配置是不一样的 <br/>
+					5. 请勿给mescroll的父元素设置了overflow, 否则滚动区域就在父元素, 从而使mescroll滚动监听失效. <br/>
+					6. 检查一下列表是否用了 浮动 或者 定位 , 导致列表内容并没有撑开高度, 从而使mescroll滚动监听失效 (注释列表的样式排除一下). <br/>
+					7. mescroll-body如果写在页面的子组件中,则需在页面给子组件传入onPageScroll,onReachBottom (参考 mescroll-comp和mescroll-more案例)<br/>
+					8. mescroll-uni的滚动需要有固定的高度, 默认:fixed="true" 通过fixed固定高度的; 如果设置为false,高度则跟随父元素,需要给父元素设置高度<br />从1.2.0版本开始, 也可以通过配置height来固定高度, 简单快捷 <br/>
+					9. 检查noMoreSize与page.size配置的值. 如果您结束上拉时,传入的当前页数据个数小于page.size时, <br/> mescroll会认为无更多数据, 将不再加载下一页. 详见<a class="green" href="https://github.com/mescroll/mescroll/issues/236">issues236</a><br />
+					10. 如果运行官方案例没有问题,请仔细对比那些你认为不可能影响的地方,哪怕一行css和js (这一步很重要,很重要...)
+				</p>
+				
+<span id="q21"></span>					
+				<p class="q-text">Q. 如何重置mescroll默认样式,比如修改空布局的样式 ?</p>
+				<p class="a-text">
+					推荐使用scss最简单,且支持多平台 ( 把样式名拷贝一份, 加 /deep/ 和  !important ) : <br/>
+					.mescroll-empty .empty-tip, <br/>
+					/deep/.mescroll-empty .empty-tip { color: red !important }<br/>
+				</p>
+				
+<span id="q25"></span>					
+				<p class="q-text">Q. 如何隐藏滚动条 ?</p>
+				<p class="a-text">
+					<a href="https://ask.dcloud.net.cn/article/36090">点击查看详情: https://ask.dcloud.net.cn/article/36090 </a>
+				</p>
+				<p class="q-text">Q. 为什么设置全局对象失效 ?</p>
+				<p class="a-text">
+					<a href="https://ask.dcloud.net.cn/question/73950">点击查看详情: https://ask.dcloud.net.cn/question/73950 </a>
+				</p>
+				
+				<p class="q-text">Q. H5端如何禁止iOS橡皮筋效果下拉回弹, 如何解决android微信X5浏览器与下拉刷新的冲突 ?</p>
+				<p class="a-text">
+					普通的html在微信等web浏览器下拉时会出现灰色或黑色背景<br/>
+					会出现 '网页由 xxx 提供', 'QQ浏览器X5内核提供技术支持' 等字眼; <br/>
+					列表在底部或顶部继续上下拉时会出现灰色的遮罩, 此时需停留2秒列表才能继续滚动; <br/> <br/>
+<span id="q26"></span>请至少更新到1.3.0版本, 内部已通过renderjs自动处理回弹效果, 无需做任何设置 <br/>
+				</p>
+				
+				<p class="q-text">Q. 部分小程序运行DEMO失败,无法调用mescroll的方法 (如:字节跳动) ?</p>
+				<p class="a-text">
+<span id="q27"></span>参考最新版本的示例, 已无此问题<br/> <br/>
+				</p>
+			
+				<p class="q-text">Q. 如何通过flex布局来固定mescroll-uni的高度?</p>
+				<p class="a-text">
+					参考最新版本示例: mescroll-uni-part.vue 和 mescroll-body-part.vue
+					</code></pre>
+				</p>
+				
+				<p class="q-text">Q. 如何使用mescroll.endByPage, mescroll.endBySize, mescroll.endSuccess中的 time参数 ?</p>
+				<p class="a-text">
+					当准备上拉加载下一页的时候,如果此时后台数据库新增了几条记录,那么加载下一页的前面几条数据会和上一页的重复<br />
+					您可以在翻下一页的时候,叫后台人员新增几条记录,即可重现上述问题<br /><br />
+					解决方法: 后台人员在请求列表的接口加传服务器时间的字段, 前端第一页加载成功后,给mescroll的time参数传入服务器时间,<br />
+					mescroll会缓存此时间,当上拉加载第二页的时候 upCallback的page.time会有值<br />
+					前端把page.time 和 page.num,page.size一起传给后台,过滤新加入的几条记录即可<br />
+					( 注意: 后台过滤新加入的数据时,需考虑第一页page.time为null的情况,因为第一页无需过滤。 mescroll不自动生成时间,服务器时间需由后台接口返回 )
+				</p>
+			</div>
+		</div>
+		
+		<!--底部-->
+		<p class="ms-footer">Copyright © 2017-2025 mescroll.com All Rights Reserved <a style="color:gray" href="http://www.beian.miit.gov.cn">粤ICP备17076411号-1</a></p>
+	</body>
+</html>

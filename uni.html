@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>mescroll -- 精致的下拉刷新和上拉加载js框架</title>
+		<meta name="Keywords" content="mescroll -- 精致的下拉刷新和上拉加载js框架(JS framework for pull-refresh and pull-up-loading),原生js, 支持vue, 支持uni-app">
+		<meta name="Description" content="mescroll -- 精致的下拉刷新和上拉加载js框架(JS framework for pull-refresh and pull-up-loading). 原生js, 支持vue, 支持uni-app; 一套代码多端运行: 完美运行于android,iOS,手机各浏览器,兼容PC端主流浏览器; 参数自由搭配,随心定制,轻松拓展; 主流APP案例,丰富经典">
+		<link rel="stylesheet" href="css/app.css">
+		<link rel="stylesheet" href="css/api.css">
+		<style type="text/css">
+			.nav-float p{font-size: 12px;color: #999;}
+		</style>
+	</head>
+
+	<body>
+		<!--标题-->
+		<div class="ms-header">
+			<div class="c-view">
+				<a href="index.html"><img class="logo" src="img/logo.png"/></a>
+				<div class="nav">
+					<a href="index.html">首页</a>
+					<a href="demo.html">案例</a>
+					<a href="api.html">mescroll.js</a>
+					<a class="active">mescroll-uni</a>
+					<a href="qa.html">问答</a>
+					
+				</div>
+			</div>
+		</div>
+		
+		<!--目录-->
+		<div class="nav-float">
+			<a href="#begin">快速开始</a>
+			<a href="#mescrollbody">mescroll-body</a>
+			<a href="#mescrolluni">mescroll-uni</a>
+			<a href="#mescrollempty">mescroll-empty</a>
+			<a href="#custom">自定义</a>
+			<a href="#options">参数说明</a>
+			<a href="#methods">常用方法</a>
+			<a href="#note">注意事项</a>
+			<a href="#load">下载案例</a>
+		</div>
+		
+		<!--内容-->
+		<div class="ms-content">
+			<div class="c-view">
+				<p class="page-title">
+					mescroll的uni版本 &nbsp;&nbsp; 1.3.8 文档 &nbsp;&nbsp; 2023-03-27
+				</p>
+				
+				<a href="https://github.com/mescroll/mescroll.git" class="git-warp" target="_blank">
+					<svg class="svg-git" width="25" height="25" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+					<span class="">GitHub</span>
+					<div class="star-warp">
+						<svg class="svg-star" width="18" height="18" aria-hidden="true" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+						<span>Star</span>
+					</div>
+				</a>
+				
+				<!--QQ群-->
+				<div style="text-align: center;margin-top: 30px;">
+					mescroll-uni QQ群: 1048016122  ( 答案: mescroll-uni交流群 )
+				</div>
+				
+				
+				<p class="nav-title">mescroll的uni版本, 是在 <a href="https://ext.dcloud.net.cn/plugin?id=343" class="green" target="_blank">uni-app</a> 运行的下拉刷新和上拉加载的组件</p>
+				
+				<p class="nav-title">简单介绍 :</p>
+				
+				<p class="nav-li">1. mescroll的uni版本, 是专门用在uni-app的下拉刷新和上拉加载的组件, 支持一套代码编译到iOS、Android、H5、小程序等多个平台</p>
+				<p class="nav-li">2. mescroll的uni版本, 继承了mescroll.js的实用功能: 自动处理分页, 自动控制无数据, 空布局提示, 回到顶部按钮 ..</p>
+				<p class="nav-li">3. mescroll的uni版本, 丰富的案例, 自由灵活的api, 超详细的注释, 可让您快速自定义真正属于自己的下拉上拉组件</p>
+				<p class="nav-li">4. mescroll的uni版本, 提供&lt;mescroll-body&gt;和&lt;mescroll-uni&gt;两个组件, 其中&lt;mescroll-body&gt;支持配置成系统自带的下拉组件</p>
+				<p class="nav-li blue">5. &lt;mescroll-body&gt;是1.2.1版本新增的组件, 用来填补&lt;mescroll-uni&gt;的不足 :</p>
+				
+				<table class="nav-table" cellspacing="0">
+					<tr>
+						<td class="white">对比项</td>
+						<td>
+							<a href="#mescrolluni">
+								<span class="blue">mescroll-uni</span>
+							</a>
+						</td>
+						<td>
+							<a href="#mescrollbody">
+								<span class="blue">mescroll-body</span>
+							</a>
+						</td>
+						<td>
+							<a href="https://uniapp.dcloud.io/api/ui/pulldown?id=onpulldownrefresh" target="_blank">
+								<span class="blue">系统自带的下拉组件</span>
+							</a> 
+						</td>
+					</tr>
+					<tr>
+						<td>本质</td>
+						<td>scroll-view的滚动</td>
+						<td>原生页的滚动</td>
+						<td>原生页的滚动</td>
+					</tr>
+					<tr>
+						<td>是否支持自定义UI</td>
+						<td>是</td>
+						<td>是</td>
+						<td>x</td>
+					</tr>
+					<tr>
+						<td>是否支持上拉翻页加载</td>
+						<td>是</td>
+						<td>是</td>
+						<td>x</td>
+					</tr>
+					<tr>
+						<td>支持配置空布局,回到顶部按钮</td>
+						<td>是</td>
+						<td>是</td>
+						<td>x</td>
+					</tr>
+					<tr>
+						<td>支持动态开启/禁止下拉功能</td>
+						<td>是</td>
+						<td>是</td>
+						<td>仅APP端可以</td>
+					</tr>
+					<tr>
+						<td>支持设置下拉区域出现的位置</td>
+						<td>是</td>
+						<td>是</td>
+						<td>仅APP端可以</td>
+					</tr>
+					<tr>
+						<td>支持局部区域滚动 (如嵌在弹窗,浮层中)</td>
+						<td>是</td>
+						<td>x</td>
+						<td>x</td>
+					</tr>
+					<tr>
+						<td>数据不满屏,仍可上拉翻页加载</td>
+						<td>是</td>
+						<td>x</td>
+						<td>x</td>
+					</tr>
+					<tr>
+						<td>不必固定高度</td>
+						<td>x</td>
+						<td>是</td>
+						<td>是</td>
+					</tr>
+					<tr>
+						<td>不必配置pages.json</td>
+						<td>x</td>
+						<td>是</td>
+						<td>x</td>
+					</tr>
+					<tr id="begin">
+						<td>
+							可写入
+							<a href="https://uniapp.dcloud.io/component/native-component?id=%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E8%AF%B4%E6%98%8E" target="_blank">
+								<span class="blue">原生组件</span>,
+							</a>
+							如video,map,canvas
+						</td>
+						<td>x</td>
+						<td>是</td>
+						<td>是</td>
+					</tr>
+					<tr>
+						<td>支持titleNView的transparent透明渐变</td>
+						<td>x</td>
+						<td>是</td>
+						<td>是</td>
+					</tr>
+					<tr>
+						<td>超长的复杂的列表是否卡顿 (性能)</td>
+						<td>低端机型会卡顿</td>
+						<td>流畅</td>
+						<td>流畅</td>
+					</tr>
+					<tr>
+						<td class="white">总结</td>
+						<td colspan="3" class="left">
+							从1.2.1版本开始 <br/>
+							绝大部分情况应优先考虑使用 <a href="#mescrollbody"> <span class="blue">mescroll-body</span> </a> 因为支持原生组件,且性能好 <br/>
+							只有当需要局部区域滚动 (如嵌在弹窗,浮层,swiper中), 才考虑<a href="#mescrolluni"> <span class="blue">mescroll-uni</span> </a>
+						</td>
+					</tr>
+				</table>
+
+				
+<p class="nav-title">快速开始 :</p>
+				
+				<p class="nav-li">1. <a class="green" href="https://ext.dcloud.net.cn/plugin?id=343" target="_blank">插件市场</a>, 点击右侧的"使用HBuilderX导入插件"按钮 (如需 npm 安装,请查看 <a href="#note">'注意事项6'</a>)</p>
+				
+				<p class="nav-li">2. <a href="#load">下载示例</a>, 找到合适的示例, 搬运代码(砖头), 比看下面的文档快多啦 ~O(∩_∩)O~</p>
+				
+<p id="mescrollbody" class="nav-title">mescroll-body :</p>
+				
+				<p class="nav-li">1. 无需配置pages.json (检查是否配置了多余的属性):</p>
+				<pre class="nav-code"><code>
+	<span class="gray">{</span>
+	   <span class="gray">"path" : "pages/xxx/xxx", // 在具体的页面中, mescroll-body 无需像 mescroll-uni 那样需要配置 pages.json</span>
+	   <span class="gray">"style" : {</span>
+			<span class="gray">"navigationBarTitleText" : "xxx",</span>
+			<span class="gray">"backgroundColorTop":"#FFFFFF", // iOS下拉bounce回弹区域的颜色 (与down.bgColor同步)</span>
+			<span class="gray">"backgroundColorBottom":"#FFFFFF", // iOS上拉bounce回弹区域的颜色 (与up.bgColor同步)</span>
+			<span class="gray">"disableScroll": false,</span> //删除此项: mescroll-body必须允许原生页面滚动, 默认false
+			<span class="gray">"enablePullDownRefresh" : false,</span> //删除此项: 不开启系统自带的下拉刷新, 默认false
+			<span class="gray">"app-plus" : {</span>
+				<span class="gray">"bounce" : "none"</span> //可选: 是否禁止iOS回弹和Android触顶触底的弧形阴影, 默认允许 (可配在 'globalStyle')
+			<span class="gray">},</span>
+			<span class="gray">"mp-alipay":{"allowsBounceVertical":"NO"}</span> //可选: 取消支付宝和钉钉小程序的iOS回弹 (可配在 'globalStyle')
+		<span class="gray">}</span>
+	<span class="gray">},</span>
+	"globalStyle" : {
+		"backgroundColorTop":"#FFFFFF" // iOS APP真机bounce回弹区域默认灰色,建议统一重置为白色
+	}
+				</code></pre>
+							   
+				<p class="nav-li">2. 在具体页面中的示例 (vue2) :</p>
+		       	<pre class="nav-code"><code>
+				
+	&lt;template&gt;
+	&lt;view&gt;
+	 &lt;mescroll-body @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption"&gt;
+		 <span class="gray">// <span class="green" style="opacity: .6"> @init="mescrollInit" @down="downCallback" @up="upCallback"为固定值,不可删改(与mescroll-mixins保持一致)</span> </span>
+		 <span class="gray">// :down="downOption" :up="upOption" 绝大部分情况无需配置 </span>
+		 <span class="gray">// :top="顶部偏移量" :bottom="底部偏移量" :topbar="状态栏" :safearea="安全区" (常用)</span>
+		 <span class="gray">// 此处支持写入<span class="green" style="opacity: .6">原生组件</span> </span>
+		 <span class="gray">&lt;view v-for="data in dataList"&gt; 数据列表... &lt;/view&gt;</span>
+	 &lt;/mescroll-body&gt;
+	 <span class="gray">&lt;view&gt;<span class="green" style="opacity: .6">fixed元素</span>需写在mescroll-body的外面,否则下拉刷新时会降级为absolute &lt;view&gt;</span>
+	&lt;/view&gt;
+	&lt;/template&gt;
+
+	&lt;script&gt;
+		<span class="gray">// 引入mescroll-mixins.js</span>
+		import MescrollMixin from "@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js";
+		<span class="gray">import MescrollMixin from "@/components/mescroll-uni/mescroll-mixins.js"; // 非<a class="blue" href="https://ext.dcloud.net.cn/plugin?id=343&update_log">uni_modules版本</a>
+		import MescrollBody from "@/components/mescroll-uni/mescroll-body.vue"; // 非<a class="blue" href="https://ext.dcloud.net.cn/plugin?id=343&update_log">uni_modules版本</a>
+		</span>
+		export default {
+			mixins: [MescrollMixin], // 使用mixin
+			<span class="gray">components: {
+				MescrollBody
+			},</span>
+			data() {
+				return {
+					<span class="gray">mescroll: null, // mescroll实例对象 (此行可删,mixins已默认)</span>
+					<span class="gray">// 下拉刷新的配置(可选, 绝大部分情况无需配置)</span>
+					<span class="gray">downOption: { </span>
+						<span class="gray">...</span>
+					<span class="gray">},</span>
+					<span class="gray">// 上拉加载的配置(可选, 绝大部分情况无需配置)</span>
+					<span class="gray">upOption: {</span>
+						<span class="gray">page: {</span>
+							<span class="gray">size: 10 // 每页数据的数量,默认10</span>
+						<span class="gray">},</span>
+						<span class="gray">noMoreSize: 5, // 配置列表的总数量要大于等于5条才显示'-- END --'的提示</span>
+						<span class="gray">empty: {</span>
+							<span class="gray">tip: '暂无相关数据'</span>
+						<span class="gray">}</span>
+					<span class="gray">},</span>
+					<span id="tagDownCallback" class="gray">// 列表数据</span>
+					dataList: []
+				}
+			},
+			methods: {
+				<span class="gray">/*mescroll组件初始化的回调,可获取到mescroll对象 (此处可删,mixins已默认)*/
+				mescrollInit(mescroll) {
+					this.mescroll = mescroll;
+				},
+				</span>
+				<span id="tagUpCallback" class="gray">/*下拉刷新的回调, 重置列表为第一页 (此处可删,mixins已默认)
+				downCallback(){
+					this.mescroll.resetUpScroll();
+				},
+				/*上拉加载的回调*/</span>
+				upCallback(page) {
+					<span class="gray">// 此处可以继续请求其他接口
+					// if(page.num == 1){
+					// 	// 请求其他接口...
+					// }
+					
+					// 如果希望先请求其他接口,再触发upCallback,可参考以下写法
+					// if(!this.isInitxx){
+					// 	apiGetxx().then(res=>{
+					// 		this.isInitxx = true
+					// 		this.mescroll.resetUpScroll() // 重新触发upCallback
+					// 	}).catch(()=>{
+					// 		this.mescroll.endErr()
+					// 	})
+					// 	return // 此处return,先获取xx
+					// }</span>
+					
+					let pageNum = page.num; <span class="gray">// 页码, 默认从1开始</span>
+					let pageSize = page.size; <span class="gray">// 页长, 默认每页10条</span>
+					<span class="gray">uni.request({</span>
+						<span class="gray">url: 'xxxx?pageNum='+pageNum+'&pageSize='+pageSize,</span>
+						<span class="gray">success: (data) => {</span>
+							<span class="gray">// 接口返回的当前页数据列表 (数组)</span>
+							let curPageData = data.xxx; 
+							<span class="gray">// 接口返回的当前页数据长度 (如列表有26个数据,当前页返回8个,则curPageLen=8)</span>
+							let curPageLen = curPageData.length; 
+							<span class="gray">// 接口返回的总页数 (如列表有26个数据,每页10条,共3页; 则totalPage=3)</span>
+							let totalPage = data.xxx; 
+							<span class="gray">// 接口返回的总数据量(如列表有26个数据,每页10条,共3页; 则totalSize=26)</span>
+							let totalSize = data.xxx; 
+							<span class="gray">// 接口返回的是否有下一页 (true/false)</span>
+							let hasNext = data.xxx; 
+							
+							<span class="gray">//设置列表数据</span>
+							if(page.num == 1) this.dataList = []; <span class="gray">//如果是第一页需手动置空列表</span>
+							this.dataList = this.dataList.concat(curPageData); <span class="gray">//追加新数据</span>
+							
+							<span class="gray">// 请求成功,隐藏加载状态</span>
+							<span class="gray">//方法一(推荐): 后台接口有返回列表的总页数 totalPage</span>
+							this.mescroll.endByPage(curPageLen, totalPage); 
+							
+							<span class="gray">//方法二(推荐): 后台接口有返回列表的总数据量 totalSize</span>
+							<span class="gray">//this.mescroll.endBySize(curPageLen, totalSize); </span>
+							
+							<span class="gray">//方法三(推荐): 您有其他方式知道是否有下一页 hasNext</span>
+							<span class="gray">//this.mescroll.endSuccess(curPageLen, hasNext); </span>
+							
+							<span class="gray">//方法四 (不推荐),会存在一个小问题:比如列表共有20条数据,每页加载10条,共2页.</span>
+							<span class="gray">//如果只根据当前页的数据个数判断,则需翻到第三页才会知道无更多数据</span>
+							<span class="gray">//如果传了hasNext,则翻到第二页即可显示无更多数据.</span>
+							<span class="gray">//this.mescroll.endSuccess(curPageLen);</span>
+							
+							<span class="gray">// 如果数据较复杂,可等到渲染完成之后再隐藏下拉加载状态: 如</span>
+							<span class="gray">// 建议使用setTimeout,因为this.$nextTick某些情况某些机型不触发</span>
+							<span class="gray">setTimeout(()=>{</span>
+								<span class="gray">this.mescroll.endSuccess(curPageLen)</span>
+							<span class="gray">},20)</span>
+							
+							<span class="blue">// 上拉加载的 curPageLen 必传, 否则会一直显示'加载中...':</span>
+							<span class="blue">1. 使配置的noMoreSize 和 empty生效</span>
+							<span class="blue">2. 判断是否有下一页的首要依据: </span>
+							<span class="blue">   当传的值小于page.size时(说明不满页了),则一定会认为无更多数据;</span>
+							<span class="blue">   比传入的totalPage, totalSize, hasNext具有更高的判断优先级;</span>
+							<span class="blue">3. 当传的值等于page.size时(满页),才取totalPage, totalSize, hasNext判断是否有下一页</span>
+							<span class="blue">传totalPage, totalSize, hasNext目的是避免方法四描述的小问题</span>
+							
+							<span class="blue">// 提示: 您无需额外维护页码和判断显示空布局,mescroll已自动处理好.</span>
+							<span class="blue">// 当您发现结果和预期不一样时, 建议再认真检查以上参数是否传正确</span>
+						},
+						<span class="gray">fail: () => {</span>
+							<span class="gray">//  请求失败,隐藏加载状态</span>
+							this.mescroll.endErr()
+						<span class="gray">}</span>
+					})
+					
+				},
+				<span class="gray">/*若希望重新加载列表,只需调用此方法即可(内部会自动page.num=1,再主动触发up.callback)*/
+				reloadList(){
+					this.mescroll.resetUpScroll();
+				}</span>
+			}
+		}
+	&lt;/script&gt;
+		       	</code></pre>
+
+	<p class="nav-li">2. 在具体页面中的示例 (vue3) :</p>
+	<pre class="nav-code"><code>
+	
+	&lt;template&gt;
+		&lt;mescroll-body @init="mescrollInit" @down="downCallback" @up="upCallback"&gt;
+			<span class="gray">// mescroll的极简示例,大部分情况就是这么用</span>
+		&lt;/mescroll-body&gt;
+	&lt;/template&gt;
+	
+	&lt;script setup&gt;
+		import { ref } from 'vue';
+		import { onPageScroll, onReachBottom } from '@dcloudio/uni-app';
+		import useMescroll from "@/uni_modules/mescroll-uni/hooks/useMescroll.js";
+		import {apiGoods} from "@/api/mock.js"
+		
+		<span class="gray">// 数据列表</span>
+		const goods = ref([]) 
+		
+		<span class="gray">// 调用mescroll的hook (注: mescroll-uni不用传onPageScroll,onReachBottom, 而mescroll-body必传)</span>
+		const { mescrollInit, downCallback, <span class="gray">getMescroll</span> } = useMescroll(onPageScroll, onReachBottom) 
+		
+		<span class="gray">// 上拉加载的回调: 其中num:当前页 从1开始, size:每页数据条数,默认10</span>
+		const upCallback = (mescroll)=>{
+			apiGoods(mescroll.num, mescroll.size).then(res=>{
+				const curPageData = res.list || [] <span class="gray">// 当前页数据</span>
+				if(mescroll.num == 1) goods.value = []; <span class="gray">// 第一页需手动制空列表</span>
+				goods.value = goods.value.concat(curPageData); <span class="gray">//追加新数据</span>
+				<span class="gray">//联网成功的回调,隐藏下拉刷新和上拉加载的状态;
+				//mescroll会根据传的参数,自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+				
+				//方法一(推荐): 后台接口有返回列表的总页数 totalPage
+				//mescroll.endByPage(curPageData.length, totalPage); //必传参数(当前页的数据个数, 总页数)
+				
+				//方法二(推荐): 后台接口有返回列表的总数据量 totalSize
+				//mescroll.endBySize(curPageData.length, totalSize); //必传参数(当前页的数据个数, 总数据量)
+				
+				//方法三(推荐): 您有其他方式知道是否有下一页 hasNext
+				//mescroll.endSuccess(curPageData.length, hasNext); //必传参数(当前页的数据个数, 是否有下一页true/false)
+				
+				//方法四 (不推荐),会存在一个小问题:比如列表共有20条数据,每页加载10条,共2页.如果只根据当前页的数据个数判断,则需翻到第三页才会知道无更多数据.</span>
+				mescroll.endSuccess(curPageData.length); <span class="gray">// 请求成功, 结束加载</span>
+			}).catch(()=>{
+				mescroll.endErr(); <span class="gray">// 请求失败, 结束加载</span>
+			})
+		}
+	&lt;/script&gt;
+	
+	// 某些情况下手动重置列表的方法
+	<span class="gray">// getMescroll().resetUpScroll()</span>
+	
+	</code></pre>
+	
+	
+<p id="mescrolluni" class="nav-title">mescroll-uni :</p>
+				
+				<p class="nav-li">1. 需要配置 pages.json :</p>
+				<pre class="nav-code"><code>
+	<span class="gray">{</span>
+	   <span class="gray">"path" : "pages/xxx/xxx", // 在具体的页面中, mescroll-uni 需要配置 pages.json, 而mescroll-body不需要</span>
+	   <span class="gray">"style" : {</span>
+			<span class="gray">"navigationBarTitleText" : "xxx",</span>
+			<span class="gray">"enablePullDownRefresh" : false,</span> // 删除此项: 不开启系统自带的下拉刷新, 默认false
+			<span class="gray">"disableScroll": false,</span> // 删除此项, 否则页面无法滚动
+			"app-plus" : {
+				"bounce" : "none" // 取消APP端iOS回弹,避免与下拉刷新冲突 (可统一配在 'globalStyle')
+			},
+			"mp-alipay":{"allowsBounceVertical":"NO"} // 取消支付宝和钉钉小程序的iOS回弹,避免与下拉刷新冲突 (可统一配在 'globalStyle')
+		<span class="gray">}</span>
+	<span class="gray">}</span>
+				</code></pre>
+							   
+				<p class="nav-li">2. 在具体页面中的示例 :</p>
+		       	<pre class="nav-code"><code>
+				
+	&lt;template&gt;
+	 &lt;view&gt;
+	  &lt;mescroll-uni @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" &gt;
+		<a class="blue" href="#mescrollbody">// 此处除了不能写原生组件,其他的与 mescroll-body 的一致 > </a>
+	  &lt;/mescroll-uni&gt;
+	  <span class="gray">&lt;view&gt;<span class="green" style="opacity: .6">原生组件和fixed元素</span>需写在mescroll-uni的外面,否则滚动列表时会抖动 &lt;view&gt;</span>
+	 &lt;view&gt;
+	&lt;/template&gt;
+
+	&lt;script&gt;
+		<a class="blue" href="#mescrollbody">// 与 mescroll-body 的一致 > </a>
+	&lt;/script&gt;
+		       	</code></pre>
+
+
+<p id="mescrollempty" class="nav-title">mescroll-empty: </p>
+					1.2.0版本开始独立出空布局组件&lt;mescroll-empty&gt;, 以便在不使用mescroll的界面也能统一管理空布局: <br/> <br/>
+					<pre class="nav-code"><code>
+					
+	&lt;template&gt;
+		&lt;view&gt;
+			<span class="gray">// 基本用法:</span>
+			&lt;mescroll-empty v-if="list.length==0"&gt;&lt;/mescroll-empty&gt;
+			<span class="gray">// 完整配置项 (option同up.empty的配置一致)</span>
+			<span class="gray">&lt;mescroll-empty v-if="isShowEmpty" :option="optEmpty" @emptyclick="emptyClick"&gt;&lt;/mescroll-empty&gt;</span>
+		&lt;/view&gt;
+	&lt;/template&gt;
+	
+	&lt;script&gt;
+		<a class="blue" href="https://ext.dcloud.net.cn/plugin?id=343&update_log">uni_modules版本</a>的mescroll-empty 支持 easycom, 已无需手动注册组件
+		<span class="gray">import MescrollEmpty from '@/components/mescroll-uni/components/mescroll-empty.vue';
+		export default {
+			components: {
+				MescrollEmpty
+			},
+			...
+		}</span>
+					</code></pre>	
+
+				
+<p id="custom" class="nav-title">自定义mescroll :</p>
+				<p class="nav-li">快速的自定义是mescroll的优势, 您可以随心所欲的进行全局配置 和 在具体界面的自定义</p>
+				<p class="nav-li">1. 可以直接修改 /components/mescroll-uni/mescroll-uni-option.js 进行全局配置</p>
+				<p class="nav-li">2. 在具体的页面中,您可以配置downOption 和 upOption 实现具体界面的自定义, 建议参考<a href="preview.html?name=mescroll-options" target="_blank">mescroll-options.vue</a></p>
+				<p class="nav-li">3. 深度定制化, 请下载和参考mescroll的中高级案例</p>
+				<p class="nav-li">4. APP,H5,微信小程序使用的是wxs, 所以动画以wxs为准. 若要自定义动画还需修改 /components/mescroll-uni/wxs/wxs.wxs</p>
+				<p class="nav-li">5. 自定义loading动画推荐: <a href="https://loading.io" target="_blank">https://loading.io</a> 和 <a href="https://icons8.com/preloaders/" target="_blank">https://icons8.com/preloaders/</a></p>
+
+							
+<p id="options" class="nav-title">参数说明 :</p>
+		       	<table class="nav-table" cellspacing="0">
+					<tr>
+						<td class="white" colspan="3"> &lt;mescroll-body<span class="gray">或mescroll-uni</span> 
+							<span class="green">@init</span>="mescrollInit"
+							<span class="green">@down</span>="downCallback" 
+							<span class="green">@up</span>="upCallback" 
+							<span class="green">:down</span>="downOption"  
+							<span class="green">:up</span>="upOption"
+							<br/>
+							<span class="green">:fixed</span>="true" 
+							<span class="green">height</span>="100%" 
+							<span class="green">top</span>="0" 
+							<span class="green">:topbar</span>="false" 
+							<span class="green">bottom</span>="0"
+							<span class="green">:bottombar</span>="true" 
+							<span class="green">:safearea</span>="false"
+							<br/>
+							<span class="green">@emptyclick</span>="emptyClick" 
+							<span class="green">@topclick</span>="topClick" 
+							<span class="green">@scroll</span>="scroll"
+						 /&gt;
+						 </td>
+					 </tr>
+					<tr>
+						<td class="green">:down</td>
+						<td>{ }</td>
+						<td>下拉刷新的配置参数</td>
+					</tr>
+					<tr>
+						<td class="green">@down</td>
+						<td>function(mescroll) {}</td>
+						<td>下拉刷新的回调 (返回mescroll实例对象)</td>
+					</tr>
+					<tr>
+						<td class="green">:up</td>
+						<td>{ }</td>
+						<td>上拉加载的配置参数</td>
+					</tr>
+					<tr>
+						<td class="green">@up</td>
+						<td>function(mescroll){}</td>
+						<td>上拉加载的回调 (返回mescroll实例对象) <br/> 此时mescroll会携带page的参数 <br/> 其中mescroll.num:当前页 从1开始, mescroll.size:每页数据条数,默认10</td>
+					</tr>
+					<tr>
+						<td class="green">@init</td>
+						<td>function(mescroll) {}</td>
+						<td>mescroll组件初始化完成的回调 (返回mescroll实例对象)</td>
+					</tr>
+					<tr>
+						<td class="green">:fixed</td>
+						<td>true</td>
+						<td>
+							是否通过fixed定位来固定mescroll-uni的高度,默认true; (mescroll-body不生效,因为无需固定高度)<br/> 
+							当配置:fixed="false"时,则mescroll-uni高度跟随父元素, 此时父元素必须有固定的高度,否则列表滚动异常<br/> 
+							所以不想使用fixed, 建议通过<a href="qa.html#q27">flex固定高度</a> 或 配置height来固定mescroll-uni的高度,详见下一行:
+						</td>
+					</tr>
+					<tr>
+						<td class="green">height</td>
+						<td>""</td>
+						<td>
+							对mescroll-uni可简单快捷设置的高度, 此项有值,则不使用fixed (1.2.0新增)<br/>
+							对mescroll-body可设置最小高度,默认100%,使列表不满屏仍可下拉 (1.2.1新增)<br/>
+							支持100, "100rpx", "100px", "100%"格式的值<br/>
+							其中纯数字则默认单位rpx, 百分比则相对于windowHeight
+						</td>
+					</tr>
+					<tr>
+						<td class="green">top</td>
+						<td>0</td>
+						<td>
+							下拉刷新区域往下偏移的距离<br/>
+							比如希望偏移100rpx, 则top="100", 传的值是rpx的数值<br/>
+							当:fixed="true", 此时top为fixed的top (已自动加上window-top的值) <br/>
+							当:fixed="false"则为padding-top<br/>
+							1.2.0版本开始支持"100rpx", "100px", "100%"格式的值
+						</td>
+					</tr>
+					<tr>
+						<td class="green">:topbar</td>
+						<td>false</td>
+						<td>
+							top的偏移量是否加上状态栏高度 (mescroll-uni当fixed为false时不生效, mescroll-body生效)  1.1.9新增<br/>
+							使用场景: 取消原生导航栏时,配置此项可自动加上状态栏高度的偏移量<br/>
+							1.2.6版本: 支持传入字符串背景,如 色值'#ffff00', 背景图'url(xxx) 0 0/100% 100%', 渐变'linear-gradient(xx)'<br/>
+							支持一行代码定义background: https://www.runoob.com/cssref/css3-pr-background.html
+						</td>
+					</tr>
+					<tr>
+						<td class="green">bottom</td>
+						<td>0</td>
+						<td>
+							上拉加载区域往上偏移的距离<br/>
+							比如希望偏移100rpx, 则bottom="100", 传的值是rpx的数值<br/>
+							当:fixed="true", 此时bottom为fixed的bottom (已自动加上window-bottom的值) <br/>
+							当:fixed="false"则为padding-bottom<br/>
+							1.2.0版本开始支持"100rpx", "100px", "100%"格式的值
+						</td>
+					</tr>
+					<tr>
+						<td class="green">:bottombar</td>
+						<td>true</td>
+						<td>
+							tab页是否偏移TabBar的高度,避免列表被TabBar遮住, 默认true (仅h5生效,仅h5需要, 1.2.7新增)<br/>
+						</td>
+					</tr>
+					<tr>
+						<td class="green">:safearea</td>
+						<td>false</td>
+						<td>
+							bottom的偏移量是否加上底部安全区的距离 (1.2.0新增)<br/>
+							适配iPhoneX时使用, 此项值对回到顶部按钮生效
+						</td>
+					</tr>
+					<tr>
+						<td class="green">:i18n</td>
+						<td>{}</td>
+						<td>
+							国际化语言配置, 参考 mescroll-i18n.vue 的示例 超简单
+						</td>
+					</tr>
+					<tr>
+						<td class="green">@emptyclick</td>
+						<td>function(mescroll) {}</td>
+						<td>点击empty配置的btnText按钮回调 (返回mescroll实例对象)</td>
+					</tr>
+					<tr>
+						<td class="green">@topclick</td>
+						<td>function(mescroll) {}</td>
+						<td>点击回到顶部的按钮回调 (返回mescroll实例对象)</td>
+					</tr>
+					<tr>
+						<td class="green">@scroll</td>
+						<td>function(mescroll) {}</td>
+						<td>滚动监听 (需在up配置onScroll:true;仅mescroll-uni可用;mescroll-body是页面的onPageScroll) <br/> console.log('当前滚动条的位置:' + mescroll.scrollTop + ', 是否向上滑:'+mescroll.isScrollUp)</td>
+					</tr>
+					<tr><td class="white" colspan="3"><b><a href="#options">down</a> 下拉刷新的配置参数 (可通过 mescroll.optDown 动态调整)</b></td></tr>
+					<tr id="tagAuto">
+						<td class="white">参数名</td>
+						<td>默认值</td>
+						<td>说明</td>
+					</tr>
+					<tr>
+						<td>use</td>
+						<td>true</td>
+						<td>是否启用下拉刷新<br />如果配置false,则不会初始化下拉刷新的布局</td>
+					</tr>
+					<tr>
+						<td>auto</td>
+						<td>true</td>
+						<td>是否在初始化完毕之后自动执行一次下拉刷新的回调 <a href="#tagCallback">callback</a></td>
+					</tr>
+					<tr>
+						<td>native</td>
+						<td>false</td>
+						<td>是否使用系统自带的下拉刷新; 默认false; 仅mescroll-body生效 <br/>
+						值为true时,需在pages配置"enablePullDownRefresh":true 和 "mp-alipay":{"allowsBounceVertical":"YES"} <br/>
+						详请参考mescroll-native的案例 (1.2.1版本新增)
+						</td>
+					</tr>
+					<tr>
+						<td>textInOffset</td>
+						<td>'下拉刷新'</td>
+						<td>下拉的距离在offset范围内的提示文本</td>
+					</tr>
+					<tr>
+						<td>textOutOffset</td>
+						<td>'释放更新'</td>
+						<td>下拉的距离大于offset范围的提示文本</td>
+					</tr>
+					<tr>
+						<td>textLoading</td>
+						<td>'加载中 ...'</td>
+						<td>加载中的提示文本</td>
+					</tr>
+					<tr>
+						<td>textSuccess</td>
+						<td>'加载成功'</td>
+						<td>加载成功的提示文本 (1.3.3新增)</td>
+					</tr>
+					<tr>
+						<td>textErr</td>
+						<td>'加载失败'</td>
+						<td>加载失败的提示文本 (1.3.3新增)</td>
+					</tr>
+					<tr>
+						<td>beforeEndDelay</td>
+						<td>100</td>
+						<td>延时结束的时长, 也是显示加载成功/失败的时长; 单位ms (1.3.3新增)</td>
+					</tr>
+					<tr>
+						<td>bgColor</td>
+						<td>'transparent'</td>
+						<td>下拉区域背景颜色 (1.2.4新增)<br/>支持背景图和渐变: 如 'url(xxx) 0 0/100% 100%', 'linear-gradient(xx)' (1.2.6版本)<br/>支持一行代码定义background: https://www.runoob.com/cssref/css3-pr-background.html<br/>建议同步配置pages.json的"backgroundColorTop"</td>
+					</tr>
+					<tr>
+						<td>textColor</td>
+						<td>'gray'</td>
+						<td>下拉文本的颜色 (当bgColor配置了颜色,textColor未配置时,则会默认为白色 1.2.4新增)</td>
+					</tr>
+					<tr>
+						<td>autoShowLoading</td>
+						<td>false</td>
+						<td>如果设置<a href="#tagAuto">auto</a>=true ( 在初始化完毕之后自动执行下拉刷新的回调 ) ,<br />那么是否显示下拉刷新的进度<br/>需配置down的callback才生效</td>
+					</tr>
+					<tr id="tagOffset">
+						<td>isLock</td>
+						<td>false</td>
+						<td>是否锁定下拉刷新<br />如果配置true,则会锁定不可下拉,可通过调用mescroll.lockDownScroll(false)解锁</td>
+					</tr>
+					<tr>
+						<td>offset</td>
+						<td>80</td>
+						<td>在列表顶部,下拉大于80px,松手即可触发下拉刷新的回调</td>
+					</tr>
+					<tr>
+						<td>fps</td>
+						<td>80</td>
+						<td>下拉的节流配置 (值越大每秒更新下拉状态的频率越高, 当您发觉下拉卡顿时可尝试调高/低此值)<br/>1.3.0版本已废弃, 已通过wxs提高性能, 无需手动节流</td>
+					</tr>
+					<tr>
+						<td>inOffsetRate</td>
+						<td>1</td>
+						<td>在列表顶部,下拉的距离小于offset时,改变下拉区域高度比例;值小于1且越接近0,高度变化越小,表现为越往下越难拉</td>
+					</tr>
+					<tr>
+						<td>outOffsetRate</td>
+						<td>0.2</td>
+						<td>在列表顶部,下拉的距离大于offset时,改变下拉区域高度比例;<br />值越接近0,高度变化越小,表现为越往下越难拉</td>
+					</tr>
+					<tr>
+						<td>bottomOffset</td>
+						<td>20</td>
+						<td>当手指touchmove位置在距离body底部20px范围内的时候结束上拉刷新,避免Webview嵌套导致touchend事件不执行</td>
+					</tr>
+					<tr>
+						<td>minAngle</td>
+						<td>45</td>
+						<td>触发下拉最少要偏移的角度(滑动的轨迹与水平线的锐角值),取值区间 [0,90];<br/>默认45度,即向下滑动的角度大于45度(方位角为45°~145°及225°~315°)则触发下拉;<br/>而小于45度,将不触发下拉,避免与左右滑动的轮播等组件冲突</td>
+					</tr>
+					
+					
+					<tr><td class="white" colspan="3"><b><span class="green">up</span> 上拉加载的配置参数 (可通过 mescroll.optUp 动态调整)</b></td></tr>
+					<tr>
+						<td class="white">参数名</td>
+						<td>默认值</td>
+						<td>说明</td>
+					</tr>
+					<tr>
+						<td>use</td>
+						<td>true</td>
+						<td>是否启用上拉加载<br />如果配置false,则不会初始化上拉加载的布局</td>
+					</tr>
+					<tr>
+						<td>auto</td>
+						<td>true</td>
+						<td>
+							是否在初始化完毕之后自动执行一次上拉加载的回调<br/>
+							当配置为false时,建议down的auto也为false,因为downCallback默认调用resetUpScroll,最终还会触发upCallback<br/>
+							如果是想实现返回刷新页面,那么其实不需要设置auto为false, <a href="#note">详情请看 >></a>
+						</td>
+					</tr>
+					<tr>
+						<td>isBounce</td>
+						<td>false</td>
+						<td>是否允许橡皮筋回弹效果, 默认不允许; 1.1.5新增 <br/> <a class="blue" href="qa.html#q25">详情</a> <br/> 1.3.0版本已废弃, 已通过renderjs自动判断, 无需配置mescroll-touch</td>
+					</tr>
+					<tr>
+						<td>page</td>
+						<td class="left">{<br/>&nbsp; num : 0 , <br/>&nbsp; size : 10 , <br/>&nbsp; time : null <br/>}</td>
+						<td class="left">num : 当前页码,默认0,回调之前加1,即<a href="#tagCallback">callback</a>(page)从1开始; <br/>size : 每页数据的数量; 默认10<br/>time : 加载第一页数据服务器返回的时间 (可空); 防止用户翻页时,后台新增了数据从而导致下一页数据重复;</td>
+					</tr>
+					<tr>
+						<td>noMoreSize</td>
+						<td>5</td>
+						<td>如果列表已无数据,可设置列表的总数量要大于5条才显示无更多数据;<br />避免列表数据过少(比如只有一条数据),显示无更多数据会不好看<br /><a>这就是为什么无更多数据 有时候不显示的原因了</a></td>
+					</tr>
+					<tr id="tagHtmlNodata">
+						<td>textLoading</td>
+						<td>'加载中 ...'</td>
+						<td>上拉加载中的文本</td>
+					</tr>
+					<tr>
+						<td>textNoMore</td>
+						<td>'-- END --'</td>
+						<td>没有更多数据的提示文本</td>
+					</tr>
+					<tr>
+						<td>bgColor</td>
+						<td>'transparent'</td>
+						<td>下拉区域背景颜色 (1.2.4新增)</td>
+					</tr>
+					<tr>
+						<td>textColor</td>
+						<td>'gray'</td>
+						<td>下拉文本的颜色 (当bgColor配置了颜色,textColor未配置时,则会默认为白色 1.2.4新增)<br/>支持背景图和渐变: 如 'url(xxx) 0 0/100% 100%', 'linear-gradient(xx)' (1.2.6版本)<br/>支持一行代码定义background: https://www.runoob.com/cssref/css3-pr-background.html<br/>建议同步配置pages.json的"backgroundColorBottom"</td>
+					</tr>
+					<tr>
+						<td>toTop</td>
+						<td class="left">{ <br/>
+							&nbsp; src : null , <br/>
+							&nbsp; offset : 1000 , <br/>
+							&nbsp; duration : 300,  <br/>
+							&nbsp; zIndex: 9990,  <br/>
+							&nbsp; right: 20,  <br/>
+							&nbsp; bottom: 120,  <br/>
+							&nbsp; safearea: false,  <br/>
+							&nbsp; width: 72,  <br/>
+							&nbsp; radius: "50%",  <br/>
+							&nbsp; left: null  <br/>
+						}</td>
+						<td class="left">回到顶部按钮的配置: <br/>
+							src : 图片路径,必须配置src才会显示; (若想禁用,则src为空串即可) <br/>
+							offset : 列表滚动1000px显示回到顶部按钮 <br/>
+							duration : 回到顶部的动画时长, 默认300ms (当值为0或300则使用系统自带回到顶部,更流畅; 其他值则通过js模拟,比较耗性能; 所以非特殊情况不建议修改)<br/>
+							zIndex : fixed定位z-index值 (1.2.0新增)<br/>
+							right: 到右边的距离 (支持"20rpx", "20px", "20%"格式的值, 纯数字则默认单位rpx. 1.2.0新增) <br/>
+							bottom: 到底部的距离 (支持"20rpx", "20px", "20%"格式的值, 纯数字则默认单位rpx. 1.2.0新增) <br/>
+							safearea: bottom的偏移量是否加上底部安全区的距离, 默认false. 适配iPhoneX时使用 (具体页面如不配此项,则取mescroll组件props的safearea值. 1.2.0新增) <br/>
+							width: 回到顶部图标的宽度 (支持"20rpx", "20px", "20%"格式的值, 纯数字则默认单位rpx. 1.2.0新增) <br/>
+							radius: 圆角 (支持"20rpx", "20px", "20%"格式的值, 纯数字则默认单位rpx. 1.2.0新增) <br/>
+							left: 到左边的距离. 此项有值时,right不生效. (支持"20rpx", "20px", "20%"格式的值, 纯数字则默认单位rpx. 1.2.0新增)
+						</td>
+					</tr>
+					<tr>
+						<td>empty</td>
+						<td class="left">{ <br/>
+							&nbsp; use : true , <br/>
+							&nbsp; icon : null , <br/>
+							&nbsp; tip : "暂无相关数据",<br/>
+							&nbsp; btnText : "", <br/>
+							&nbsp; fixed: false, <br/>
+							&nbsp; top: "100rpx", <br/>
+							&nbsp; zIndex: 99 <br/>
+						}</td>
+						<td class="left">列表第一页无任何数据时,显示的空布局<br/>
+							use : 是否启用<br/>
+							icon : 空布局的图标路径 (支持网络路径)<br/>
+							tip : 提示文本 <br/>
+							btnText : 按钮文本 <br/>
+							fixed : 是否使用定位,默认false; 配置fixed为true,以下的top和zIndex才生效 (transform会使fixed失效,所以最终还是会降级为absolute) <br/>
+							top : fixed定位的top值 (完整的单位值,如"100rpx", "10%";) <br/>
+							zIndex : fixed定位z-index值 <br/>
+						</td>
+					</tr>
+					<tr>
+						<td>isBoth</td>
+						<td><span id="tagNoMoreSize"></span>false</td>
+						<td>上拉加载时,如果滑动到列表顶部是否可以同时触发下拉刷新</td>
+					</tr>
+					<tr>
+						<td>isLock</td>
+						<td>false</td>
+						<td>是否锁定上拉加载<br />如果配置true,则会锁定不可上拉,可通过调用mescroll.lockUpScroll(false)解锁</td>
+					</tr>
+					<tr>
+						<td>offset</td>
+						<td>150</td>
+						<td>距底部多远时,触发upCallback ; 1.1.0新增 (仅mescroll-uni生效) <br/> mescroll-body配置的是pages.json的 onReachBottomDistance</td>
+					</tr>
+					<tr>
+						<td>onScroll</td>
+						<td>false</td>
+						<td>是否监听滚动事件, 默认false (仅mescroll-uni可用;mescroll-body是页面的onPageScroll)<br/> 监听列表滚动是非常耗性能的,很容易出现卡顿,非特殊情况不要配置此项</td>
+					</tr>
+				</table>
+				
+				<p id="methods" class="nav-title">常用方法 :</p>
+		       	<table class="nav-table" cellspacing="0">
+					<tr>
+						<td class="white">方法名</td>
+						<td>说明</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.endByPage(dataSize, totalPage, systime)</td>
+						<td class="left">隐藏下拉刷新和上拉加载的状态, 在联网获取数据成功后调用<br />
+						dataSize : 当前页获取的数据总数(注意是当前页)<br />
+						totalPage : 列表的总页数<br/>
+						<a href="qa.html#q9">systime : 加载第一页数据的服务器时间 (点击查看详情);</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.endBySize(dataSize, totalSize, systime)</td>
+						<td class="left">隐藏下拉刷新和上拉加载的状态, 在联网获取数据成功后调用<br />
+						dataSize : 当前页获取的数据总数(注意是当前页)<br />
+						totalSize : 列表的总数据量<br/>
+						systime : 加载第一页数据的服务器时间 (可空);
+						</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.endSuccess(dataSize, hasNext, systime)</td>
+						<td class="left">隐藏下拉刷新和上拉加载的状态, 在联网获取数据成功后调用<br />
+						dataSize : 当前页获取的数据量(注意是当前页)<br />
+						hasNext : 是否有下一页数据true/false<br/>
+						systime : 加载第一页数据的服务器时间 (可空);
+						</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.endErr()</td>
+						<td class="left">隐藏下拉刷新和上拉加载的状态, 在联网获取数据失败后调用;<br />mescroll内部会自动恢复原来的页码,时间等变量</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.resetUpScroll( isShowLoading )</td>
+						<td class="left">重置列表为第一页 (常用于列表筛选条件变化或切换菜单时重新刷新列表数据)<br />内部实现: 把page.num=1,再主动触发up.callback<br />isShowLoading 是否显示进度布局; <br />1.默认null,不传参,则显示上拉加载的进度布局 <br />2.传参true, 则显示下拉刷新的进度布局<br />3.传参false,则不显示上拉和下拉的进度 (常用于静默更新列表数据)</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.triggerDownScroll()</td>
+						<td>主动触发下拉刷新</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.triggerUpScroll()</td>
+						<td>主动触发上拉加载</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.setPageNum(num)</td>
+						<td>设置当前page.num的值;<br/>如果要重置列表数据,请使用 <a href="#note">this.mescroll.resetUpScroll()</a>, 而不是setPageNum(1)</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.setPageSize(size)</td>
+						<td>设置当前page.size的值</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.optDown</td>
+						<td>获取下拉刷新的配置 (可直接动态修改配置的值)</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.optUp</td>
+						<td>获取上拉加载的配置 (可直接动态修改配置的值)</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.lockDownScroll( isLock )</td>
+						<td>锁定下拉刷新  ( isLock=true,null 锁定 ; isLock=false 解锁 )</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.lockUpScroll( isLock )</td>
+						<td>锁定上拉加载 ( isLock=true,null 锁定 ; isLock=false 解锁 )</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.scrollTo( y, t )</td>
+						<td class="left">滚动列表到指定位置<br />y=0,则回到列表顶部; 如需滚动到列表底部,可设置y很大的值,比如y=99999<br />当y为css选择器时,则mescroll可滚动到指定view (需更新到1.3.2)<br />t时长,单位ms,默认300; 如果不需要动画缓冲效果,则传0</td>
+					</tr>
+				</table>
+				<p id="others" class="nav-title">其他方法 :</p>
+		       	<table class="nav-table" cellspacing="0">
+		       		<tr><td colspan="2" class="white">以下方法不常用,您可灵活运用于更复杂的场景</td></tr>
+					<tr>
+						<td class="white">方法名</td>
+						<td>说明</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.showDownScroll()</td>
+						<td>显示下拉刷新的进度布局</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.endDownScroll()</td>
+						<td>隐藏下拉刷新的进度布局</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.endUpScroll(isShowNoMore)</td>
+						<td>结束上拉加载的状态<br />isShowNoMore=true, 显示无更多数据;<br />isShowNoMore=false, 隐藏上拉加载;<br />isShowNoMore=null, 保持当前状态</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.showUpScroll()</td>
+						<td>显示上拉加载的进度布局</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.showNoMore()</td>
+						<td>显示上拉无更多数据的布局</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.hideUpScroll()</td>
+						<td>隐藏上拉加载的布局</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.showEmpty()</td>
+						<td>显示无任何数据的空布局</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.removeEmpty()</td>
+						<td>移除无任何数据的空布局</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.showTopBtn()</td>
+						<td>显示回到顶部的按钮</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.hideTopBtn()</td>
+						<td>隐藏回到顶部的按钮</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.getScrollTop()</td>
+						<td>获取滚动条的位置y; 也可以在up配置onScroll监听滚动条的位置</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.getBodyHeight()</td>
+						<td>获取body的高度 </td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.getScrollHeight()</td>
+						<td>获取滚动内容的高度 (mescroll-uni支持, mescroll-body不支持)</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.getClientHeight()</td>
+						<td>获取mescroll的高度 (mescroll-uni支持, mescroll-body不支持)</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.getScrollBottom()</td>
+						<td>获取到底部的距离 (mescroll-uni支持, mescroll-body不支持)</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.viewId </td>
+						<td>获取mescroll的唯一元素id <br/>配合uni.createSelectorQuery获取更多信息, mescroll-uni支持,mescroll-body不支持</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.isScrollUp</td>
+						<td>获取滚动的方向 (true向上滑 / false向下滑, mescroll-uni支持, mescroll-body不支持)</td>
+					</tr>
+					<tr>
+						<td class="left">mescroll.version</td>
+						<td>mescroll的版本号</td>
+					</tr>
+				</table>
+
+
+<p id="load" class="nav-title">下载案例: </p>
+				
+				<pre class="nav-code"><code>
+	<a class="green" href="https://ext.dcloud.net.cn/plugin?id=343" target="_blank">所有vue2,vue3示例源码,点此获取 (含高级示例) >> (插件市场右上角的 "使用HBuilderX导入示例项目"或"下载示例项目ZIP")</a>
+				</code></pre>
+
+
+<p id="note" class="nav-title">注意事项 :</p>
+				
+				<p class="nav-li">
+					1. 请一定要记住一个经常经常会用到的方法: <span class="green">this.mescroll.resetUpScroll()</span> <br/>
+					比如你想在onShow中刷新一下列表, 比如点击tab切换时重新加载列表, 比如搜索条件变化或状态更新时重置列表数据 <br/>
+					那么你只需调用 this.mescroll.resetUpScroll() 方法即可 (内部会自动page.num=1,再主动触发up.callback)
+				</p>
+				
+				<p class="nav-li">
+					2. 当详情页返回到列表页,想在列表页的onShow重新加载列表数据时, 可以通过配置down和up的auto为false, 然后在onShow中延时调用this.downCallback实现; <br/>
+					还有一个最简单的方式,完全不用配置auto为false, 只需在onShow加一个变量控制即可 (推荐):
+					<pre class="nav-code"><code>
+	// 详情返回列表,重新加载列表数据
+	onShow() {
+		this.canReset && this.mescroll.resetUpScroll() // 重置列表数据为第一页  
+		this.canReset && this.mescroll.scrollTo(0,0) // 重置列表数据为第一页时,建议把滚动条也重置到顶部,避免无法再次翻页的问题  
+		this.canReset = true // 过滤第一次的onShow事件,避免初始化界面时重复触发upCallback, 无需配置auto:false
+		
+		// 注意: 子组件没有 onShow 的生命周期, 所以
+		// 对于 mescroll-more.vue 和 mescroll-swiper.vue 的返回刷新, 需更新 1.3.3 版本, 且参考对应示例的onShow写法
+	}
+					</code></pre>
+				</p>
+				
+				<p class="nav-li">
+					3. mescroll-body是原生界面的滚动,依赖于onPageScroll和onReachBottom的<a href="https://uniapp.dcloud.io/collocation/frame/lifecycle?id=%E9%A1%B5%E9%9D%A2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">页面生命周期</a>, 所以mescroll-body尽量不要写在页面的子组件里, 因为子组件无页面的这些生命周期;
+					如果非要写在子组件中,则需在页面给子组件传入onPageScroll,onReachBottom,否则无法正常滑动列表和触发上拉加载; <br/>
+					强烈推荐参考 mescroll-comp.vue 或 mescroll-more.vue 的案例, 通过mixins传入最简单. <a href="#load">进入插件市场下载案例 ></a> <br/>
+					(或改用 mescroll-uni , 无此限制, 无此问题 :  &lt;mescroll-uni height="100%" top="xx" ... )
+				</p>
+				
+				
+				<p class="nav-li">
+					4. 一个.vue文件只能存在一个mescroll组件, 如果要多mescroll组件, 需分别封装到子组件中 <br/>
+					如: tab切换, 页面存在多个mescroll组件, 那么请严格参考 mescroll-more.vue 或 mescroll-swiper.vue 示例的写法 <br/>
+					把每个mescroll组件分别封装在子组件中 ( 比如封装为 mescroll-more-item.vue )
+				</p>
+				
+				<p class="nav-li">
+					5. down和up的配置项不是响应式的, 如果要动态修改配置, 可通过 <span class="green">this.mescroll.optDown</span> 和 <span class="green">this.mescroll.optUp</span> 动态修改 <br/>
+					比如,可以动态设置 this.mescroll.optDown.isLock = false/true 来实现动态开关下拉刷新 <br/>
+					比如,可以动态设置 this.mescroll.optUp.empty.icon = "xxx.png" 来动态设置空布局的图标
+				</p>
+				
+				<p class="nav-li">
+					6. mescroll支持npm安装: <span class="green">npm install --save mescroll-uni</span> <br/>
+					引入mescroll-body组件: import MescrollBody from "mescroll-uni/mescroll-body.vue"; <br/>
+					引入mescroll-uni组件: import MescrollUni from "mescroll-uni/mescroll-uni.vue"; <br/>
+					但不推荐npm安装, 因为设置mescroll为全局组件, 编译到APP可能会失效<br/>
+					这是HBuilderX编辑器的问题, 详见: <a href="https://ask.dcloud.net.cn/question/73950">https://ask.dcloud.net.cn/question/73950</a><br/>
+					也可能会使js中的条件编译失效, 详见: <a href="https://github.com/mescroll/mescroll/issues/351">https://github.com/mescroll/mescroll/issues/351</a>
+				</p>
+				
+				<p class="nav-li">
+					7. Android小程序下拉时image和swiper脱离文档流的问题, 已在1.3.1版本修复 <br/>
+					APP端下拉时video脱离文档流的问题, 已在1.3.3版本的 mescroll-options.vue 提供解决方案, 请下载查看
+				</p>
+				
+				<p class="nav-li">
+					8. 其他: <a class="blue" href="qa.html#q20">点此查看常见问题 > </a>
+				</p>
+				<br /><br /><br /><br /><br />
+			</div>
+		</div>
+		
+		<!--底部-->
+		<p class="ms-footer">Copyright © 2017-2025 mescroll.com All Rights Reserved <a style="color:gray" href="http://www.beian.miit.gov.cn">粤ICP备17076411号-1</a></p>
+	</body>
+</html>

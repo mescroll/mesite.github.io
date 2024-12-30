@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>mescroll -- 精致的下拉刷新和上拉加载js框架</title>
+		<meta name="Keywords" content="mescroll -- 精致的下拉刷新和上拉加载js框架(JS framework for pull-refresh and pull-up-loading). mescroll.js, 原生js, 支持vue; mescroll-uni, 支持uni-app">
+		<meta name="Description" content="mescroll -- 精致的下拉刷新和上拉加载js框架(JS framework for pull-refresh and pull-up-loading). mescroll.js, 原生js, 支持vue, 不依赖jquery, zepto; mescroll-uni: 支持uni-app, 小程序, APP, H5; 一套代码多端运行: 完美运行于android,iOS,手机各浏览器,兼容PC端主流浏览器; 参数自由搭配,随心定制,轻松拓展; 主流APP案例,丰富经典">
+		<link rel="stylesheet" href="dist/mescroll.min.css">
+		<link rel="stylesheet" href="css/app.css">
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+
+	<body>
+		<!--标题-->
+		<div class="ms-header">
+			<div class="c-view">
+				<img class="logo" src="img/logo.png"/>
+				<div class="nav"> <a class="active">首页</a> <a href="demo.html">案例</a> <a href="api.html">mescroll.js</a> <a href="uni.html">mescroll-uni</a> <a href="qa.html">问答</a> </div>
+			</div>
+		</div>
+		
+		<!--内容-->
+		<div id="mescroll" class="mescroll">
+			<div id="msContent" class="ms-content">
+				<div class="summary">
+					<img class="slogan-zh" data-src="img/slogan-zh.png"/><br/>
+					<img class="slogan-en" data-src="img/slogan-en.png"/><br/>
+					<a href="api.html" class="btn-line">立即使用</a>
+					<a href="demo.html" class="btn-line">精品案例</a>
+				</div>
+				
+				<div class="slogan-black">
+					<div class="slogan-text">
+						<p class="slogan-title">原生js, 不依赖jquery,zepto<br />支持vue</p>
+						<p class="slogan-tip">超详细注释, 快速使用,轻松上手</p>
+						<p class="slogan-title">一套代码多端运行, 支持uni-app</p>
+						<p class="slogan-tip">完美运行于android, iOS, 手机各浏览器<br/>兼容PC端主流浏览器</p>
+					</div>
+					<img class="slogan-gif" data-src="./img/gif/taobao.gif"/>
+				</div>
+				
+				<div class="slogan-white">
+					<img class="slogan-gif" data-src="./img/gif/jingdong.gif"/>
+					<div class="slogan-text">
+						<p class="slogan-title">参数自由搭配, 随心定制, 轻松拓展</p>
+						<p class="slogan-tip">主流APP案例, 丰富经典<br /><br />MIT协议, 免费商用</p>
+					</div>
+				</div>
+				
+				<div class="slogan-black">
+					<div class="slogan-text">
+						<p class="slogan-title">自动判断列表有无数据</p>
+						<p class="slogan-tip">自动提示有无更多数据</p>
+						<p class="slogan-title">一个界面可有多个mescroll</p>
+						<p class="slogan-tip">支持菜单列表数据缓存</p>
+					</div>
+					<img class="slogan-gif" data-src="./img/gif/list-mescroll-more.gif"/>
+				</div>
+				
+				<div class="slogan-white">
+					<img class="slogan-gif" data-src="./img/gif/meituan.gif"/>
+					<div class="slogan-text">
+						<p class="slogan-title">可指定列表平滑滚动到任何位置</p>
+						<p class="slogan-tip">支持监听列表滚动事件,可一键滚动到列表顶部和底部,附带平滑缓冲效果</p>
+						<p class="slogan-title">自动控制翻页</p>
+						<p class="slogan-tip">无需手动判断处理列表的页码,时间等变量</p>
+					</div>
+				</div>
+				
+				<div class="slogan-black">
+					<div class="slogan-text">
+						<p class="slogan-title">支持图片懒加载</p>
+						<p class="slogan-tip">支持配置各种占位图与显示动画,上手超简单</p>
+						<p class="slogan-title">数据不满屏, 自动加载下一页</p>
+						<p class="slogan-tip">可配置自动满屏加载数据<br/>可临时锁定下拉刷新和上拉加载</p>
+					</div>
+					<img class="slogan-gif" data-src="./img/gif/list-full-lock.gif"/><br />
+					<a href="demo.html" class="btn-line">更多案例</a>
+					<a href="api.html" class="btn-line">快速入门</a>
+				</div>
+					
+				<!--底部-->
+				<p class="ms-footer">Copyright © 2017-2025 mescroll.com All Rights Reserved <a style="color:gray" href="http://www.beian.miit.gov.cn"><a style="color:gray" href="http://www.beian.miit.gov.cn">粤ICP备17076411号-1</a></a></p>
+			</div>
+		</div>
+	</body>
+	
+	<script src="dist/mescroll.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			//初始化mescroll对象
+			new MeScroll("mescroll",{
+				down:{
+					autoShowLoading: true,
+					offset: 150,
+					htmlContent:'<svg class="svg-warp" xmlns="http://www.w3.org/2000/svg" version="1.1"> <text x="15%" y="65%" class="svg-text">mescroll</text> </svg>',
+					inited: function(mescroll, downwarp) {
+						//下拉刷新初始化完毕的回调
+						mescroll.downProgressDom = downwarp.getElementsByClassName("svg-text")[0];
+					},
+					inOffset: function(mescroll) {
+						//下拉的距离进入offset范围内那一刻的回调
+						mescroll.downProgressDom.classList.remove("svg-run");
+					},
+					outOffset: function(mescroll) {
+						//下拉的距离大于offset那一刻的回调
+					},
+					onMoving: function(mescroll, rate, downHight) {
+						//下拉过程中的回调,滑动过程一直在执行;
+						mescroll.downProgressDom.style.strokeDasharray=(rate*rate*100)+"% 100%";
+					},
+					showLoading: function(mescroll) {
+						//显示下拉刷新进度的回调
+						mescroll.downProgressDom.classList.add("svg-run");
+					},
+					callback:function(me){
+						setTimeout(function(){
+							me.endSuccess();
+							document.getElementById("msContent").classList.add("mescroll-fade-in");//显示内容
+						},2000)
+					}
+				},
+				up:{
+					toTop: {src: "img/mescroll-totop.png"}
+				}
+			});
+			
+			//加载图片
+			var imgArr=document.getElementsByTagName("img");
+			for (var i = 0; i < imgArr.length; i++) {
+				var imgDom=imgArr[i];
+				var imgpath=imgDom.getAttribute("data-src");
+				if(imgpath) imgDom.src=imgpath;
+			}
+		}
+	</script>
+</html>

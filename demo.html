@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>mescroll -- 精致的下拉刷新和上拉加载js框架</title>
+		<meta name="Keywords" content="mescroll -- 精致的下拉刷新和上拉加载js框架(JS framework for pull-refresh and pull-up-loading),原生js, 支持vue, 不依赖jquery, zepto, 比 iScroll5, dropload 精简强大">
+		<meta name="Description" content="mescroll -- 精致的下拉刷新和上拉加载js框架(JS framework for pull-refresh and pull-up-loading). 原生js, 支持vue, 不依赖jquery, zepto, 比iScroll,dropload精简强大; 一套代码多端运行: 完美运行于android,iOS,手机各浏览器,兼容PC端主流浏览器; 参数自由搭配,随心定制,轻松拓展; 主流APP案例,丰富经典">
+		<link rel="stylesheet" href="css/app.css">
+		<link rel="stylesheet" href="css/demo.css">
+	</head>
+
+	<body>
+		<!--标题-->
+		<div class="ms-header">
+			<div class="c-view">
+				<a href="index.html" target="_blank"><img class="logo" src="img/logo.png"/></a>
+				<div class="nav"> <a href="index.html">首页</a> <a class="active">案例</a> <a href="api.html">mescroll.js</a> <a href="uni.html">mescroll-uni</a> <a href="qa.html">问答</a> </div>
+			</div>
+		</div>
+		
+		<!--目录-->
+		<div class="nav-float">
+			<a href="#base">基础案例</a>
+			<a href="#middle">中级案例</a>
+			<a href="#hight">高级案例</a>
+		</div>
+		
+		<!--内容-->
+		<div class="ms-content">
+			<div class="c-view">
+				<p id="base" class="nav-title">基础案例 :</p>
+				<p class="green">快速入门和理解mescroll的各项配置</p>
+				<a class="demo-li" href="preview.html?name=list-products" target="_blank">
+					<div class="iPhone"><img src="./img/gif/list-products.gif"/></div>
+					<p class="demo-title">商品列表</p>
+					<p>下拉刷新重置列表数据</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=list-news" target="_blank">
+					<div class="iPhone"><img src="./img/gif/list-news.gif"/></div>
+					<p class="demo-title">新闻列表</p>
+					<p>下拉刷新添加新数据到列表顶部</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=list-mescroll-one" target="_blank">
+					<div class="iPhone"><img src="./img/gif/list-mescroll-one.gif"/></div>
+					<p class="demo-title">单mescroll</p>
+					<p>每次切换菜单都重置列表,不缓存数据</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=list-mescroll-more" target="_blank">
+					<div class="iPhone"><img src="./img/gif/list-mescroll-more.gif"/></div>
+					<p class="demo-title">多mescroll</p>
+					<p>每个菜单列表仅初始化一次,切换菜单缓存数据</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=list-full-lock" target="_blank">
+					<div class="iPhone"><img src="./img/gif/list-full-lock.gif"/></div>
+					<p class="demo-title">满屏加载与锁定滑动</p>
+					<p>自动满屏加载,可临时锁定上拉刷新和下拉加载</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=list-mescroll-lazy" target="_blank">
+					<div class="iPhone"><img src="./img/gif/list-mescroll-lazy.gif"/></div>
+					<p class="demo-title">图片懒加载</p>
+					<p>支持配置各种占位图与显示动画,上手超简单</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=list-mescroll-body" target="_blank">
+					<div class="iPhone"><img src="./img/gif/list-mescroll-body.gif"/></div>
+					<p class="demo-title">body为滚动区域</p>
+					<p>无需设置高度,写法简单,适用于无悬浮菜单的界面</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=list-msg" target="_blank">
+					<div class="iPhone"><img src="./img/gif/list-msg.gif"/></div>
+					<p class="demo-title">聊天记录</p>
+					<p>下拉加载数据,类似微信QQ的聊天记录</p>
+				</a>
+				<!-- <a class="demo-li" href="preview.html?name=mescroll-options" target="_blank">
+					<div class="iPhone"><img src="./img/gif/mescroll-options.gif"/></div>
+					<p class="demo-title">mescroll所有配置项</p>
+					<p>源码展示mescroll所有配置项, 快速使用与调试mescroll</p>
+				</a> -->
+				
+				<p id="middle" class="nav-title">中级案例 :</p>
+				<p class="green">熟练掌握mescroll自定义下拉刷新和上拉加载的技巧</p>
+				<a class="demo-li" href="preview.html?name=sticky" target="_blank">
+					<div class="iPhone"><img src="./img/gif/mescroll-sticky.gif"/></div>
+					<p class="demo-title">吸顶悬浮效果</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=search" target="_blank">
+					<div class="iPhone"><img src="./img/gif/mescroll-search.gif"/></div>
+					<p class="demo-title">关键词搜索</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=swiper-tap" target="_blank">
+					<div class="iPhone"><img src="./img/gif/mescroll-swiper-tap.gif"/></div>
+					<p class="demo-title">轮播切换效果</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=swiper-nav" target="_blank">
+					<div class="iPhone"><img src="./img/gif/mescroll-swiper-tap.gif"/></div>
+					<p class="demo-title">轮播导航菜单</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=zhihu" target="_blank">
+					<div class="iPhone"><img src="./img/gif/zhihu.gif"/></div>
+					<p class="demo-title">知乎 v3.53.0</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=xinlang" target="_blank">
+					<div class="iPhone"><img src="./img/gif/xinlang.gif"/></div>
+					<p class="demo-title">新浪微博 v7.6.1</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=beibei" target="_blank">
+					<div class="iPhone"><img src="./img/gif/beibei.gif"/></div>
+					<p class="demo-title">贝贝 v6.0.0</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=yabuli" target="_blank">
+					<div class="iPhone"><img src="./img/gif/yabuli.gif"/></div>
+					<p class="demo-title">雅布力 v2.4.0</p>
+				</a>
+				
+				<p id="hight" class="nav-title">高级案例 :</p>
+				<p class="green">充分展示mescroll灵活简单极易拓展的特性</p>
+				<a class="demo-li" href="preview.html?name=taobao" target="_blank">
+					<div class="iPhone"><img src="./img/gif/taobao.gif"/></div>
+					<p id="hight2" class="demo-title">淘宝 v6.8.0</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=jingdong" target="_blank">
+					<div class="iPhone"><img src="./img/gif/jingdong.gif"/></div>
+					<p class="demo-title">京东 v6.1.0</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=meituan" target="_blank">
+					<div class="iPhone"><img src="./img/gif/meituan.gif"/></div>
+					<p class="demo-title">美团 v8.2.3</p>
+				</a>
+				<a class="demo-li" href="preview.html?name=meitunmama" target="_blank">
+					<div class="iPhone"><img src="./img/gif/meitunmama.gif"/></div>
+					<p class="demo-title">美囤妈妈 v2.0.5</p>
+				</a>
+				
+				<br /><br /><br />
+			</div>
+		</div>
+		
+		<!--底部-->
+		<p class="ms-footer">Copyright © 2017-2025 mescroll.com All Rights Reserved <a style="color:gray" href="http://www.beian.miit.gov.cn">粤ICP备17076411号-1</a></p>
+	</body>
+
+</html>

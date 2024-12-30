@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>mescroll -- 精致的下拉刷新和上拉加载js框架</title>
+		<meta name="Keywords" content="mescroll -- 精致的下拉刷新和上拉加载js框架(JS framework for pull-refresh and pull-up-loading),原生js, 支持vue, 不依赖jquery, zepto, 比 iScroll5, dropload 精简强大">
+		<meta name="Description" content="mescroll -- 精致的下拉刷新和上拉加载js框架(JS framework for pull-refresh and pull-up-loading). 原生js, 支持vue, 不依赖jquery, zepto, 比iScroll,dropload精简强大; 一套代码多端运行: 完美运行于android,iOS,手机各浏览器,兼容PC端主流浏览器; 参数自由搭配,随心定制,轻松拓展; 主流APP案例,丰富经典">
+		<link rel="stylesheet" href="css/app.css">
+		<link rel="stylesheet" href="css/preview.css">
+	</head>
+
+	<body>
+		<!--标题-->
+		<div class="ms-header">
+			<div class="c-view">
+				<a href="index.html"><img class="logo" src="img/logo.png"/></a>
+				<div class="nav"> <a href="index.html">首页</a> <a href="demo.html">案例</a> <a href="api.html">mescroll.js</a> <a href="uni.html">mescroll-uni</a> <a href="qa.html">问答</a> </div>
+			</div>
+		</div>
+		
+		<!--内容-->
+		<div class="ms-content">
+			<p class="app-name"><span id="appName"></span> <a href="qa.html#q5" target="_blank">无法拖动列表 ?</a></p>
+			<p id="swiperTip" style="margin: -20px 0 20px;display: none;">在PC端体验本案例, 滑动轮播的时候鼠标不要超出红色线框哦</p>
+			<div class="demo-li">
+				<div class="iPhone"><img class="gif" id="gif"/></div>
+				<p class="demo-title">效果预览</p>
+			</div>
+			<div class="demo-li" style="margin: 0 50px">
+				<div class="iPhone"><iframe id="preview" width="330" height="562"></iframe></div>
+				<p class="demo-title green">PC端体验mescroll案例</p>
+			</div>
+			<div class="demo-li">
+				<div class="iPhone"><div id="qrcode" class="qrcode"></div></div>
+				<p class="demo-title">扫一扫在手机体验</p>
+			</div>
+		</div>
+	</body>
+	
+	<script src="js/jquery.min.js"></script>
+	<script src="js/demo-data.js"></script>
+	<script src="js/jquery.qrcode.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			//获取路径
+			var name=getUrlParam("name");
+			if (name) {
+				var obj=getDemoObj(name);
+				$("#appName").text(obj.tip);
+				$("#gif").attr("src",obj.gif);
+				$("#preview").attr("src",obj.path);
+				$('#qrcode').qrcode("http://www.mescroll.com/"+obj.path);
+				//如果是轮播的案例,需要提示只能在红线内体验
+				if(name=="swiper-tap"||name=="swiper-nav"){
+					$("#preview").css("border","5px solid red");
+					$("#swiperTip").show();
+				}
+			}
+			
+		});
+		
+		/*获取地址参数,传中文需先encodeURIComponent编码,然后decodeURIComponent解码*/
+		function getUrlParam(e){
+			var d = new RegExp("(^|&)" + e + "=([^&]*)(&|$)", "i");
+			var f = window.location.search.substr(1).match(d);
+			if (f != null) {
+				return decodeURIComponent(f[2]);
+			}
+			return null;
+		}
+	</script>
+</html>

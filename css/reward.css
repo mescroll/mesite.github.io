@@ -1,0 +1,101 @@
+body {
+	background-color: #2C2C32
+}
+
+.ms-content .c-view {
+	padding-top: 80px;
+	text-align: center;
+	color: white;
+}
+
+.base-warp{
+	position: relative;
+	display: inline-block;
+	width: 800px;
+	padding: 40px;
+	line-height: 50px;
+	border: 1px solid #ccc;
+	border-radius: 30px;
+	margin-bottom: 20px;
+}
+.base-warp .base-title{
+	position: absolute;
+	top: -30px;
+	left: 50%;
+	width: 240px;
+	margin-left: -120px;
+	padding: 5px 0;
+	font-size: 18px;
+	border-radius: 150px;
+	background-color: #2C2C32;
+}
+.base-warp .base-title.green{
+	border: 1px solid #53D9EF;
+}
+.base-warp .base-title.pink{
+	border: 1px solid #EA1C40;
+}
+.base-warp .pay-wx{
+	position: absolute;
+	top: 60px;
+	left: 25px;
+	width: 260px;
+	border: 10px solid white;
+	border-bottom-width: 5px;
+	border-radius: 10px;
+}
+.base-warp .pay-zfb{
+	position: absolute;
+	top: 60px;
+	right: 25px;
+	width: 260px;
+	border: 10px solid white;
+	border-bottom-width: 5px;
+	border-radius: 10px;
+}
+.base-warp a{
+	display: block;
+	color: #53D9EF;
+}
+.base-warp a:hover{
+	color: #A6E22B;
+}
+
+/*菜单标题*/
+.nav-title{
+	padding: 35px 0 15px 0;
+	font-size: 20px;
+	color: #A6E22B;
+}
+/*排行榜*/
+.reward-title{
+	padding: 50px;
+	font-size: 20px;
+	color: #EA1C40;
+}
+.reward-list{
+	width: 100%;
+	font-size: 14px;
+	border: 1px solid gray;
+	border-bottom:none;
+	color: #ccc;
+}
+.reward-list td{
+	padding: 15px 0;
+	border-bottom: 1px solid gray;
+}
+.reward-list a{
+	color: #ccc;
+}
+.reward-list .reward-name{
+	font-size: 16px;
+	width: 25%;
+}
+.reward-list .reward-tip{
+	font-size: 16px;
+	width: 50%;
+}
+.reward-list .reward-url{
+	font-size: 16px;
+	width: 25%;
+}

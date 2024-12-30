@@ -1,0 +1,130 @@
+body{
+	background-color: #2C2C32;
+}
+.mescroll{
+	position: fixed;
+	top: 80px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 0;
+	height: auto;
+	text-align: center;
+}
+/*下拉刷新--内容区,定位于区域底部*/
+.mescroll-downwarp .downwarp-content{
+	bottom: -60px;
+}
+/*svg动画*/
+.svg-warp {
+	width: 350px;
+	height: 150px;
+}
+.svg-text{
+	fill: none;
+	stroke-width: 1px;
+	stroke: white;
+	font-size: 60px;
+	letter-spacing:5px;
+}
+.svg-run{
+	-webkit-animation: animSvgText 1.5s ease-in forwards;
+	animation: animSvgText 1.5s ease-in forwards;
+}
+@-webkit-keyframes animSvgText {
+	0% {
+		stroke-dasharray: 0 100%;
+	}
+	100% {
+		stroke-dasharray: 100% 100%;
+	}
+}
+@keyframes animSvgText {
+	0% {
+		stroke-dasharray: 0 100%;
+	}
+	100% {
+		stroke-dasharray: 100% 100%;
+	}
+}
+/*上拉加载区域隐藏*/
+.mescroll-upwarp{
+	display: none;
+}
+
+/*内容*/
+.ms-content{
+	opacity: 0;
+}
+.summary .slogan-zh{
+	margin-top: 100px;
+}
+.summary .slogan-en{
+	margin-top: 30px;
+}
+
+/*线框按钮*/
+.btn-line{
+	display: inline-block;
+	margin: 60px 35px 0 35px;
+	padding: 10px 50px;
+	border: 1px solid white;
+	border-radius: 20px;
+	color: white;
+	cursor: pointer;
+}
+
+/*黑色说明*/
+.slogan-black{
+	padding: 90px 0 50px 0;
+	text-align: center;
+	background-color: #2C2C32;
+}
+.slogan-black .slogan-text{
+	display: inline-block;
+	text-align: right;
+	color: white;
+	vertical-align: top;
+}
+.slogan-black .slogan-text .slogan-title{
+	font-size: 24px;
+	margin-bottom: 30px;
+}
+.slogan-black .slogan-text .slogan-tip{
+	font-size: 14px;
+	line-height: 30px;
+	margin-bottom: 60px;
+}
+.slogan-black .slogan-gif{
+	margin-top: 10px;
+	margin-left: 100px;
+	width: 320px;
+	height: 562px;
+}
+
+/*白色说明*/
+.slogan-white{
+	padding: 100px 0 0 0;
+	text-align: center;
+	background-color: white;
+}
+.slogan-white .slogan-text{
+	display: inline-block;
+	text-align: left;
+	color: #2C2C32;
+	vertical-align: top;
+}
+.slogan-white .slogan-text .slogan-title{
+	font-size: 24px;
+	margin-bottom: 40px;
+}
+.slogan-white .slogan-text .slogan-tip{
+	font-size: 14px;
+	margin-bottom: 60px;
+}
+.slogan-white .slogan-gif{
+	margin-top: -142px;
+	margin-right: 100px;
+	border-left: 5px solid #2C2C32;
+	border-right: 5px solid #2C2C32;
+}

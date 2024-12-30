@@ -1,0 +1,73 @@
+body{
+	background-color: #2C2C32
+}
+/*大标题*/
+.page-title{
+	margin-top: 50px;
+	font-size: 20px;
+	text-align: center;
+	color: white;
+}
+/*GitHub*/
+.git-warp{
+	display: block;
+	margin-top: 30px;
+	text-align: center;
+	color: white;
+}
+.git-warp:hover{
+	color: #53D9EF;
+}
+.git-warp *{
+	vertical-align: middle;
+}
+.git-warp .svg-git{
+	fill: white;
+}
+.star-warp{
+	display: inline-block;
+	padding: 0 8px 2px 8px;
+	border: 1px solid #CDCFD1;
+	border-radius: 3px;
+	background-color: #F7F9FB;
+	color: black;
+}
+
+/*目录*/
+.nav-float{
+	z-index: 9990;
+	position: fixed;
+	top: 150px;
+	right: 4%;
+	width: 150px;
+	text-align: center;
+	border: 1px solid darkgray;
+	border-radius: 6px;
+	background-color: #2C2C32;
+}
+.nav-float a{
+	display: block;
+	padding: 10px;
+	border-bottom: 1px solid darkgray;
+	color: white;
+}
+.nav-float a:last-child{
+	border: none;
+}
+.nav-float a:hover{
+	color: #A6E22B;
+}
+/*菜单标题*/
+.nav-title{
+	padding: 75px 0 15px 0;
+	font-size: 20px;
+	color: #A6E22B;
+}
+.nav-title .green{
+	font-size: 14px;
+}
+/*说明*/
+.nav-li{
+	padding: 14px 0;
+	color: white;
+}
